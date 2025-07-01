@@ -11,6 +11,12 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "club"
+    },
     "name": {
       "type": "string"
     },
@@ -20,11 +26,10 @@
       "target": "api::tournament.tournament",
       "mappedBy": "club"
     },
-    "user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "mappedBy": "club"
+    "address": {
+      "type": "component",
+      "component": "shared.address",
+      "repeatable": false
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+    "collectionName": "components_shared_addresses",
+    "info": {
+      "displayName": "Address",
+      "icon": "map-marker-alt",
+      "description": "Reusable address with geolocation"
+    },
+    "options": {},
+    "attributes": {
+      "street": {
+        "type": "string",
+        "required": true
+      },
+      "streetComplement": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string",
+        "required": true
+      },
+      "zipcode": {
+        "type": "string",
+        "required": true
+      },
+      "country": {
+        "type": "string",
+        "required": true
+      },
+      "location": {
+        "type": "json",
+        "required": true
+      }
+    }
+  }
+  
