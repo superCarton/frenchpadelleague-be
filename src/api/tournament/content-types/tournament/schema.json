@@ -21,6 +21,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::registration.registration"
+    },
+    "referee": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::referee.referee",
+      "inversedBy": "tournaments"
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "referees",
+  "info": {
+    "singularName": "referee",
+    "pluralName": "referees",
+    "displayName": "Referee"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "referee"
+    },
+    "tournaments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tournament.tournament",
+      "mappedBy": "referee"
+    }
+  }
+}

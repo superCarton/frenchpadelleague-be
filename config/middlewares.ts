@@ -6,7 +6,15 @@ export default [
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
-  'strapi::session',
+  {
+    name: 'strapi::session',
+    config: {
+      cookie: {
+        secure: false,
+        sameSite: 'lax',
+      },
+    },
+  },
   'strapi::favicon',
   'strapi::public',
 ];

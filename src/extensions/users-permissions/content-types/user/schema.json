@@ -66,10 +66,30 @@
       "inversedBy": "users",
       "configurable": false
     },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
     "player": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::player.player",
+      "inversedBy": "user"
+    },
+    "club": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::club.club",
+      "inversedBy": "user"
+    },
+    "referee": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::referee.referee",
       "mappedBy": "user"
     }
   }

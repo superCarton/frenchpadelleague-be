@@ -11,14 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "elo": {
+      "type": "integer"
+    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "player"
-    },
-    "elo": {
-      "type": "integer"
+      "mappedBy": "player"
     }
   }
 }

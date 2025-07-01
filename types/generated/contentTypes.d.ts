@@ -436,6 +436,10 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -490,6 +494,41 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
+export interface ApiRefereeReferee extends Struct.CollectionTypeSchema {
+  collectionName: 'referees';
+  info: {
+    displayName: 'Referee';
+    pluralName: 'referees';
+    singularName: 'referee';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::referee.referee'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tournaments: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tournament.tournament'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -582,6 +621,7 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    referee: Schema.Attribute.Relation<'manyToOne', 'api::referee.referee'>;
     registrations: Schema.Attribute.Relation<
       'oneToMany',
       'api::registration.registration'
@@ -1050,6 +1090,7 @@ export interface PluginUsersPermissionsUser
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -1060,6 +1101,8 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    firstname: Schema.Attribute.String & Schema.Attribute.Required;
+    lastname: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1074,6 +1117,7 @@ export interface PluginUsersPermissionsUser
     player: Schema.Attribute.Relation<'oneToOne', 'api::player.player'>;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    referee: Schema.Attribute.Relation<'oneToOne', 'api::referee.referee'>;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
       'manyToOne',
@@ -1105,6 +1149,7 @@ declare module '@strapi/strapi' {
       'api::club.club': ApiClubClub;
       'api::match.match': ApiMatchMatch;
       'api::player.player': ApiPlayerPlayer;
+      'api::referee.referee': ApiRefereeReferee;
       'api::registration.registration': ApiRegistrationRegistration;
       'api::team.team': ApiTeamTeam;
       'api::tournament.tournament': ApiTournamentTournament;

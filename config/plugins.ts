@@ -16,4 +16,19 @@ export default ({env }) => ({
           },
         },
     },
+    documentation: {
+        enabled: true,
+        config: {
+            auth: {
+                enabled: true,
+                secret: env('DOCS_PASSWORD_SECRET'),
+            },
+            info: {
+                title: 'API Padel League',
+                version: '1.0.0',
+                description: 'Documentation sécurisée',
+            },
+            generateDefaultDocumentation: true,
+        },
+    }
 });
