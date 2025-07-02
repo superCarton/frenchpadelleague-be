@@ -18,7 +18,34 @@
       "mappedBy": "player"
     },
     "elo": {
-      "type": "integer"
+      "type": "integer",
+      "required": true,
+      "default": 600
+    },
+    "matchesHistory": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::match.match"
+    },
+    "registrations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::registration.registration",
+      "inversedBy": "players"
+    },
+    "league": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::league.league",
+      "inversedBy": "players"
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -22,6 +22,14 @@
       "relation": "oneToMany",
       "target": "api::tournament.tournament",
       "mappedBy": "referee"
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
     }
   }
 }

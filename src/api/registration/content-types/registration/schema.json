@@ -11,15 +11,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "team": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::team.team"
-    },
     "tournament": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::tournament.tournament"
+    },
+    "players": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::player.player",
+      "mappedBy": "registrations"
     },
     "paid": {
       "type": "boolean",

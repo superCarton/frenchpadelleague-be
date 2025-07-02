@@ -17,6 +17,20 @@
       "target": "api::club.club",
       "inversedBy": "tournaments"
     },
+    "startDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "endDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "league": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::league.league",
+      "inversedBy": "tournaments"
+    },
     "registrations": {
       "type": "relation",
       "relation": "oneToMany",
@@ -27,6 +41,12 @@
       "relation": "manyToOne",
       "target": "api::referee.referee",
       "inversedBy": "tournaments"
+    },
+    "matches": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::match.match",
+      "mappedBy": "tournament"
     }
   }
 }

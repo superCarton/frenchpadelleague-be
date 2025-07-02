@@ -30,6 +30,9 @@
       "type": "component",
       "component": "shared.address",
       "repeatable": false
+    },
+    "SIRET": {
+      "type": "string"
     }
   }
 }

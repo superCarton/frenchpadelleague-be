@@ -3,7 +3,7 @@
     "info": {
       "displayName": "Address",
       "icon": "map-marker-alt",
-      "description": "Reusable address with geolocation"
+      "description": "Reusable address component with geolocation"
     },
     "options": {},
     "attributes": {
@@ -26,9 +26,11 @@
         "type": "string",
         "required": true
       },
-      "location": {
-        "type": "json",
-        "required": true
+      "latitude": {
+        "type": "decimal"
+      },
+      "longitude": {
+        "type": "decimal"
       }
     }
   }

@@ -3,14 +3,15 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface SharedAddress extends Struct.ComponentSchema {
   collectionName: 'components_shared_addresses';
   info: {
-    description: 'Reusable address with geolocation';
+    description: 'Reusable address component with geolocation';
     displayName: 'Address';
     icon: 'map-marker-alt';
   };
   attributes: {
     city: Schema.Attribute.String & Schema.Attribute.Required;
     country: Schema.Attribute.String & Schema.Attribute.Required;
-    location: Schema.Attribute.JSON & Schema.Attribute.Required;
+    latitude: Schema.Attribute.Decimal;
+    longitude: Schema.Attribute.Decimal;
     street: Schema.Attribute.String & Schema.Attribute.Required;
     streetComplement: Schema.Attribute.String;
     zipcode: Schema.Attribute.String & Schema.Attribute.Required;
