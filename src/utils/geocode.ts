@@ -14,7 +14,7 @@ export type Coordinates = {
 };
 
 /**
- * Géocode une adresse en récupérant latitude et longitude
+ * Géocode une adresse
  */
 export const geocodeAddress = async (address: Address): Promise<Coordinates> => {
   const query = `${address.street} ${address.streetComplement || ''} ${address.zipcode} ${address.city} ${address.country}`;
@@ -37,4 +37,17 @@ export const geocodeAddress = async (address: Address): Promise<Coordinates> => 
     latitude: parseFloat(lat),
     longitude: parseFloat(lon),
   };
+};
+
+/**
+ * Compare deux adresses pour vérifier si elles ont changé
+ */
+export const hasAddressChanged = (oldAddress: Address, newAddress: Address): boolean => {
+  return (
+    oldAddress.street !== newAddress.street ||
+    oldAddress.streetComplement !== newAddress.streetComplement ||
+    oldAddress.city !== newAddress.city ||
+    oldAddress.zipcode !== newAddress.zipcode ||
+    oldAddress.country !== newAddress.country
+  );
 };

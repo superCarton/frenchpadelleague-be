@@ -25,6 +25,9 @@
       "type": "datetime",
       "required": true
     },
+    "registrationDeadline": {
+      "type": "datetime"
+    },
     "league": {
       "type": "relation",
       "relation": "manyToOne",
@@ -47,6 +50,45 @@
       "relation": "oneToMany",
       "target": "api::match.match",
       "mappedBy": "tournament"
+    },
+    "isMaster": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "maxTeams": {
+      "type": "integer",
+      "required": false
+    },
+    "registrationFee": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text"
+    },
+    "allocatedCourts": {
+      "type": "integer"
+    },
+    "prizeMoney": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "currentStatus": {
+      "type": "enumeration",
+      "required": true,
+      "default": "pending",
+      "enum": [
+        "pending",
+        "validated",
+        "ongoing",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "gameFormat": {
+      "type": "string"
     }
   }
 }

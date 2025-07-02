@@ -17,10 +17,11 @@
       "target": "plugin::users-permissions.user",
       "mappedBy": "player"
     },
-    "elo": {
-      "type": "integer",
-      "required": true,
-      "default": 600
+    "club": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::club.club",
+      "inversedBy": "players"
     },
     "matchesHistory": {
       "type": "relation",
@@ -39,6 +40,21 @@
       "target": "api::league.league",
       "inversedBy": "players"
     },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "elo": {
+      "type": "integer",
+      "required": true,
+      "default": 600
+    },
     "firstname": {
       "type": "string",
       "required": true
@@ -46,6 +62,12 @@
     "lastname": {
       "type": "string",
       "required": true
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "payer"
     }
   }
 }

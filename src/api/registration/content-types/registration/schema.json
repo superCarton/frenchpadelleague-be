@@ -22,9 +22,11 @@
       "target": "api::player.player",
       "mappedBy": "registrations"
     },
-    "paid": {
-      "type": "boolean",
-      "default": false
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "registration"
     }
   }
 }

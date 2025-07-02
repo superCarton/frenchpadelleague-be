@@ -14,6 +14,7 @@ export default ({env }) => ({
             defaultFrom: env('SMTP_DEFAULT_FROM', 'noreply@tondomaine.com'),
             defaultReplyTo: env('SMTP_DEFAULT_REPLYTO', 'noreply@tondomaine.com'),
           },
+          secure: env.bool('SMTP_SECURE', false),
         },
     },
     documentation: {

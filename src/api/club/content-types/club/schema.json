@@ -31,8 +31,40 @@
       "component": "shared.address",
       "repeatable": false
     },
-    "SIRET": {
+    "totalCourts": {
+      "type": "integer",
+      "required": true
+    },
+    "hasRestaurant": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "contactEmail": {
+      "type": "email",
+      "required": false
+    },
+    "phoneNumber": {
       "type": "string"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "players": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::player.player",
+      "mappedBy": "club"
     }
   }
 }
