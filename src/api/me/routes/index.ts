@@ -31,5 +31,15 @@ export default {
         },
       },
     },
+    {
+      method: 'GET',
+      path: '/me/profiles',
+      handler: 'me.getProfiles',
+      config: {
+        auth: {
+          strategies: ['users-permissions'],
+        },
+      },
+    }
   ],
 };
