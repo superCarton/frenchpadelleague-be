@@ -418,7 +418,7 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
     singularName: 'club';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     address: Schema.Attribute.Component<'shared.address', false>;
@@ -498,7 +498,7 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
     singularName: 'match';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -522,6 +522,30 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMeMe extends Struct.CollectionTypeSchema {
+  collectionName: 'me';
+  info: {
+    displayName: 'Me';
+    pluralName: 'mes';
+    singularName: 'me';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::me.me'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
   collectionName: 'payments';
   info: {
@@ -530,7 +554,7 @@ export interface ApiPaymentPayment extends Struct.CollectionTypeSchema {
     singularName: 'payment';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     amount: Schema.Attribute.Decimal;
@@ -576,7 +600,7 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     singularName: 'player';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     club: Schema.Attribute.Relation<'manyToOne', 'api::club.club'>;
@@ -621,7 +645,7 @@ export interface ApiRefereeReferee extends Struct.CollectionTypeSchema {
     singularName: 'referee';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -660,7 +684,7 @@ export interface ApiRegistrationRegistration
     singularName: 'registration';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -693,7 +717,7 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
     singularName: 'tournament';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     allocatedCourts: Schema.Attribute.Integer;
@@ -1253,6 +1277,7 @@ declare module '@strapi/strapi' {
       'api::club.club': ApiClubClub;
       'api::league.league': ApiLeagueLeague;
       'api::match.match': ApiMatchMatch;
+      'api::me.me': ApiMeMe;
       'api::payment.payment': ApiPaymentPayment;
       'api::player.player': ApiPlayerPlayer;
       'api::referee.referee': ApiRefereeReferee;

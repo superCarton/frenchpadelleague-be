@@ -1,0 +1,13 @@
+{
+    "collectionName": "me",
+    "info": {
+      "singularName": "me",
+      "pluralName": "mes",
+      "displayName": "Me"
+    },
+    "options": {
+      "draftAndPublish": false
+    },
+    "attributes": {}
+  }
+  
