@@ -1,6 +1,7 @@
 {
   "auth": {
-    "enabled": false
+    "enabled": false,
+    "secret": "FrenchPadelLeague!1"
   },
   "info": {
     "title": "API Padel League",
@@ -16,7 +17,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-08T08:20:49.242Z"
+    "x-generation-date": "2025-07-08T08:48:57.189Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",

@@ -1,6 +1,14 @@
 export default ({env }) => ({
     'users-permissions': {
-        enabled: true,
+      enabled: true,
+      config: {
+        jwt: {
+          expiresIn: '7d',
+        },
+        password: {
+          minLength: 8,
+        },
+      },
     },
     email: {
         config: {
@@ -24,8 +32,8 @@ export default ({env }) => ({
         enabled: true,
         config: {
             auth: {
-                enabled: false,
-                // secret: env('DOCS_PASSWORD_SECRET'),
+                enabled: true,
+                secret: env('DOCS_PASSWORD_SECRET'),
             },
             info: {
                 title: 'API Padel League',
