@@ -32,8 +32,7 @@ export default ({env }) => ({
         enabled: true,
         config: {
             auth: {
-                enabled: true,
-                secret: env('DOCS_PASSWORD_SECRET'),
+                enabled: false,
             },
             info: {
                 title: 'API Padel League',

@@ -2,37 +2,57 @@ import { factories } from '@strapi/strapi';
 import type { Context } from 'koa';
 
 export default factories.createCoreController('api::player.player', ({ strapi }) => ({
-  async create(ctx: Context) {
-    const user = ctx.state.user;
-    if (!user) {
-      return ctx.unauthorized('You must be logged in.');
+  async create(ctx) {
+    const data = ctx.request.body;
+
+    if (!data) {
+      return ctx.badRequest('Données manquantes');
     }
 
-    const { firstname, lastname, elo = 600 } = ctx.request.body;
+    const { email, password, firstname, lastname, ...playerData } = data;
 
-    if (!firstname || !lastname) {
-      return ctx.badRequest('Firstname and lastname are required.');
+    if (!email || !password || !firstname || !lastname) {
+      return ctx.badRequest('Email, mot de passe, prénom et nom sont requis');
     }
 
-    const existingPlayer = await strapi.db.query('api::player.player').findOne({
-      where: { user: user.id },
+    // Vérifie que l'email n'est pas déjà utilisé
+    const existingUser = await strapi.db.query('plugin::users-permissions.user').findOne({
+      where: { email },
     });
 
-    if (existingPlayer) {
-      return ctx.conflict('A player is already associated with this user.');
+    if (existingUser) {
+      return ctx.badRequest('Un utilisateur avec cet email existe déjà');
     }
 
-    const player = await strapi.db.query('api::player.player').create({
+    // Crée le user
+    const newUser = await strapi.db.query('plugin::users-permissions.user').create({
+      data: {
+        email,
+        username: email,
+        password,
+      },
+    });
+
+    // Crée le player et lie le user
+    const newPlayer = await strapi.db.query('api::player.player').create({
       data: {
         firstname,
         lastname,
-        elo,
-        user: user.id,
+        ...playerData,
+        user: newUser.id,
       },
-      populate: ['user'],
     });
 
-    return ctx.send(player);
+    // Génère le token JWT
+    const token = strapi.plugins['users-permissions'].services.jwt.issue({
+      id: newUser.id,
+    });
+
+    // Retourne le token et le player
+    return ctx.created({
+      jwt: token,
+      player: newPlayer,
+    });
   },
 
   async update(ctx: Context) {
