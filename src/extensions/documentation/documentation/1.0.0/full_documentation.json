@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-08-06T12:21:15.818Z"
+    "x-generation-date": "2025-08-08T09:59:41.677Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -8064,6 +8064,10 @@
                   "lastname": {
                     "type": "string"
                   },
+                  "birthdate": {
+                    "type": "string",
+                    "format": "date"
+                  },
                   "payments": {
                     "type": "array",
                     "items": {
@@ -9875,6 +9879,10 @@
                             },
                             "lastname": {
                               "type": "string"
+                            },
+                            "birthdate": {
+                              "type": "string",
+                              "format": "date"
                             },
                             "payments": {
                               "type": "array",
@@ -12760,6 +12768,10 @@
                 "lastname": {
                   "type": "string"
                 },
+                "birthdate": {
+                  "type": "string",
+                  "format": "date"
+                },
                 "payments": {
                   "type": "array",
                   "items": {
@@ -15458,6 +15470,10 @@
               "lastname": {
                 "type": "string"
               },
+              "birthdate": {
+                "type": "string",
+                "format": "date"
+              },
               "payments": {
                 "type": "array",
                 "items": {
@@ -15642,7 +15658,8 @@
             "required": [
               "elo",
               "firstname",
-              "lastname"
+              "lastname",
+              "birthdate"
             ],
             "type": "object",
             "properties": {
@@ -15727,6 +15744,10 @@
               "lastname": {
                 "type": "string"
               },
+              "birthdate": {
+                "type": "string",
+                "format": "date"
+              },
               "payments": {
                 "type": "array",
                 "items": {
@@ -15802,7 +15823,8 @@
         "required": [
           "elo",
           "firstname",
-          "lastname"
+          "lastname",
+          "birthdate"
         ],
         "properties": {
           "id": {
@@ -17673,6 +17695,10 @@
                   "lastname": {
                     "type": "string"
                   },
+                  "birthdate": {
+                    "type": "string",
+                    "format": "date"
+                  },
                   "payments": {
                     "type": "array",
                     "items": {
@@ -18002,6 +18028,10 @@
           },
           "lastname": {
             "type": "string"
+          },
+          "birthdate": {
+            "type": "string",
+            "format": "date"
           },
           "payments": {
             "type": "array",
@@ -20067,6 +20097,10 @@
                   "lastname": {
                     "type": "string"
                   },
+                  "birthdate": {
+                    "type": "string",
+                    "format": "date"
+                  },
                   "payments": {
                     "type": "array",
                     "items": {
@@ -21804,6 +21838,10 @@
                           },
                           "lastname": {
                             "type": "string"
+                          },
+                          "birthdate": {
+                            "type": "string",
+                            "format": "date"
                           },
                           "payments": {
                             "type": "array",
@@ -24453,6 +24491,10 @@
                       },
                       "lastname": {
                         "type": "string"
+                      },
+                      "birthdate": {
+                        "type": "string",
+                        "format": "date"
                       },
                       "payments": {
                         "type": "array",

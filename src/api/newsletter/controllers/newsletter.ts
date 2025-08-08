@@ -1,11 +1,28 @@
-/**
- * newsletter controller
- */
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import { registerNewsletterEmail } from "../../../utils/emails";
 
 import { factories } from '@strapi/strapi'
 
 export default factories.createCoreController('api::newsletter.newsletter', {
+  async create(ctx) {
+    const { email } = ctx.request.body.data;
+
+    const existing = await strapi.db.query('api::newsletter.newsletter').findOne({
+      where: { email },
+    });
+
+    if (existing) {
+      return ctx.badRequest('Cet email est déjà inscrit à la newsletter');
+    }
+
+    const entry = await strapi.db.query('api::newsletter.newsletter').create({
+      data: { email },
+    });
+
+    await registerNewsletterEmail(email);
+
+    return entry;
+  },
     async delete(ctx) {
         const token = ctx.query.token;
     

@@ -633,6 +633,7 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    birthdate: Schema.Attribute.Date & Schema.Attribute.Required;
     club: Schema.Attribute.Relation<'manyToOne', 'api::club.club'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
