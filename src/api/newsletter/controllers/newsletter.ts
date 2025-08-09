@@ -12,7 +12,7 @@ export default factories.createCoreController('api::newsletter.newsletter', {
     });
 
     if (existing) {
-      return ctx.badRequest('Cet email est déjà inscrit à la newsletter');
+      return ctx.badRequest('Cet email est déjà inscrit');
     }
 
     const entry = await strapi.db.query('api::newsletter.newsletter').create({
