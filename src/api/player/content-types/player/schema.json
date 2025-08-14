@@ -28,12 +28,6 @@
       "relation": "oneToMany",
       "target": "api::match.match"
     },
-    "registrations": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::registration.registration",
-      "inversedBy": "players"
-    },
     "league": {
       "type": "relation",
       "relation": "manyToOne",
@@ -52,8 +46,9 @@
     },
     "elo": {
       "type": "integer",
-      "required": true,
-      "default": 600
+      "required": false,
+      "default": 600,
+      "min": 0
     },
     "firstname": {
       "type": "string",

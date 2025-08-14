@@ -8,7 +8,7 @@ async function getEntityByUser(ctx: Context, entityUID: string) {
 
   return strapi.db.query(entityUID).findOne({
     where: { user: user.id },
-    populate: ['user'],
+    populate: ['league'],
   });
 }
 

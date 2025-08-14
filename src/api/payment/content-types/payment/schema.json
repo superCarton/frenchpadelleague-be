@@ -17,12 +17,6 @@
       "target": "api::player.player",
       "inversedBy": "payments"
     },
-    "registration": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::registration.registration",
-      "inversedBy": "payments"
-    },
     "currency": {
       "type": "enumeration",
       "required": true,

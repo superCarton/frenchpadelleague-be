@@ -34,11 +34,6 @@
       "target": "api::league.league",
       "inversedBy": "tournaments"
     },
-    "registrations": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::registration.registration"
-    },
     "referee": {
       "type": "relation",
       "relation": "manyToOne",
@@ -72,9 +67,6 @@
     "prizeMoney": {
       "type": "integer"
     },
-    "name": {
-      "type": "string"
-    },
     "currentStatus": {
       "type": "enumeration",
       "required": true,
@@ -89,6 +81,18 @@
     },
     "gameFormat": {
       "type": "string"
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team.team",
+      "mappedBy": "tournament"
+    },
+    "address": {
+      "type": "component",
+      "component": "shared.address",
+      "repeatable": false,
+      "required": true
     }
   }
 }

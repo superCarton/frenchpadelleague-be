@@ -1,6 +1,5 @@
 import { factories } from '@strapi/strapi';
 import type { Context } from 'koa';
-import { registeWelcomeEmail } from '../../../utils/emails';
 
 export default factories.createCoreController('api::player.player', ({ strapi }) => ({
   async create(ctx) {
@@ -25,14 +24,19 @@ export default factories.createCoreController('api::player.player', ({ strapi })
       return ctx.badRequest('Un utilisateur avec cet email existe déjà');
     }
 
-    // Crée le user
-    const newUser = await strapi.db.query('plugin::users-permissions.user').create({
-      data: {
+    // Crée le user via le service pour avoir le hash et les hooks
+    const newUser = await strapi
+      .plugin('users-permissions')
+      .service('user')
+      .add({
         email,
         username: email,
         password,
-      },
-    });
+        provider: 'local',
+        role: 1,
+        blocked: false,
+        confirmed: true,
+      });
 
     // Crée le player et lie le user
     const newPlayer = await strapi.db.query('api::player.player').create({
@@ -46,13 +50,11 @@ export default factories.createCoreController('api::player.player', ({ strapi })
     });
 
     // Génère le token JWT
-    const token = strapi.plugins['users-permissions'].services.jwt.issue({
-      id: newUser.id,
-    });
+    const token = strapi
+      .plugin('users-permissions')
+      .service('jwt')
+      .issue({ id: newUser.id });
 
-    await registeWelcomeEmail(email, firstname);
-
-    // Retourne le token et le player
     return ctx.created({
       jwt: token,
       player: newPlayer,

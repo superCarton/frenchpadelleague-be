@@ -19,14 +19,3 @@ export const registerNewsletterEmail = (userEmail: string) => {
         `
     });
 };
-
-export const registeWelcomeEmail = (userEmail: string, firstname: string) => {
-    return strapi.plugin('email').service('email').send({
-        to: userEmail,
-        subject: 'Bienvenue sur FPL 🎾🎉',
-        html: `
-            <p>Bonjour ${firstname},</p>
-            <p>Merci pour ton inscription à la French Padel League !</p>
-        `
-    });
-};
