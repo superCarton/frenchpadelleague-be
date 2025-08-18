@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-08-14T20:45:01.822Z"
+    "x-generation-date": "2025-08-18T12:18:47.065Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -7739,19 +7739,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "currentStatus": {
-                              "type": "string",
-                              "enum": [
-                                "pending",
-                                "validated",
-                                "ongoing",
-                                "completed",
-                                "cancelled"
-                              ]
-                            },
-                            "gameFormat": {
-                              "type": "string"
-                            },
                             "teams": {
                               "type": "array",
                               "items": {
@@ -7768,6 +7755,21 @@
                             },
                             "address": {
                               "$ref": "#/components/schemas/SharedAddressComponent"
+                            },
+                            "currentStatus": {
+                              "type": "string",
+                              "enum": [
+                                "pending-validation",
+                                "validated",
+                                "registrations-opened",
+                                "registrations-closed",
+                                "started",
+                                "completed",
+                                "cancelled"
+                              ]
+                            },
+                            "gamesFormat": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -10832,19 +10834,6 @@
                 "prizeMoney": {
                   "type": "integer"
                 },
-                "currentStatus": {
-                  "type": "string",
-                  "enum": [
-                    "pending",
-                    "validated",
-                    "ongoing",
-                    "completed",
-                    "cancelled"
-                  ]
-                },
-                "gameFormat": {
-                  "type": "string"
-                },
                 "teams": {
                   "type": "array",
                   "items": {
@@ -10861,6 +10850,21 @@
                 },
                 "address": {
                   "$ref": "#/components/schemas/SharedAddressComponent"
+                },
+                "currentStatus": {
+                  "type": "string",
+                  "enum": [
+                    "pending-validation",
+                    "validated",
+                    "registrations-opened",
+                    "registrations-closed",
+                    "started",
+                    "completed",
+                    "cancelled"
+                  ]
+                },
+                "gamesFormat": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",
@@ -12630,19 +12634,6 @@
                                 "prizeMoney": {
                                   "type": "integer"
                                 },
-                                "currentStatus": {
-                                  "type": "string",
-                                  "enum": [
-                                    "pending",
-                                    "validated",
-                                    "ongoing",
-                                    "completed",
-                                    "cancelled"
-                                  ]
-                                },
-                                "gameFormat": {
-                                  "type": "string"
-                                },
                                 "teams": {
                                   "type": "array",
                                   "items": {
@@ -12659,6 +12650,21 @@
                                 },
                                 "address": {
                                   "$ref": "#/components/schemas/SharedAddressComponent"
+                                },
+                                "currentStatus": {
+                                  "type": "string",
+                                  "enum": [
+                                    "pending-validation",
+                                    "validated",
+                                    "registrations-opened",
+                                    "registrations-closed",
+                                    "started",
+                                    "completed",
+                                    "cancelled"
+                                  ]
+                                },
+                                "gamesFormat": {
+                                  "type": "string"
                                 },
                                 "createdAt": {
                                   "type": "string",
@@ -15662,19 +15668,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "currentStatus": {
-                              "type": "string",
-                              "enum": [
-                                "pending",
-                                "validated",
-                                "ongoing",
-                                "completed",
-                                "cancelled"
-                              ]
-                            },
-                            "gameFormat": {
-                              "type": "string"
-                            },
                             "teams": {
                               "type": "array",
                               "items": {
@@ -15691,6 +15684,21 @@
                             },
                             "address": {
                               "$ref": "#/components/schemas/SharedAddressComponent"
+                            },
+                            "currentStatus": {
+                              "type": "string",
+                              "enum": [
+                                "pending-validation",
+                                "validated",
+                                "registrations-opened",
+                                "registrations-closed",
+                                "started",
+                                "completed",
+                                "cancelled"
+                              ]
+                            },
+                            "gamesFormat": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -18072,19 +18080,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "currentStatus": {
-                              "type": "string",
-                              "enum": [
-                                "pending",
-                                "validated",
-                                "ongoing",
-                                "completed",
-                                "cancelled"
-                              ]
-                            },
-                            "gameFormat": {
-                              "type": "string"
-                            },
                             "teams": {
                               "type": "array",
                               "items": {
@@ -18101,6 +18096,21 @@
                             },
                             "address": {
                               "$ref": "#/components/schemas/SharedAddressComponent"
+                            },
+                            "currentStatus": {
+                              "type": "string",
+                              "enum": [
+                                "pending-validation",
+                                "validated",
+                                "registrations-opened",
+                                "registrations-closed",
+                                "started",
+                                "completed",
+                                "cancelled"
+                              ]
+                            },
+                            "gamesFormat": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -20597,19 +20607,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "currentStatus": {
-                              "type": "string",
-                              "enum": [
-                                "pending",
-                                "validated",
-                                "ongoing",
-                                "completed",
-                                "cancelled"
-                              ]
-                            },
-                            "gameFormat": {
-                              "type": "string"
-                            },
                             "teams": {
                               "type": "array",
                               "items": {
@@ -20626,6 +20623,21 @@
                             },
                             "address": {
                               "$ref": "#/components/schemas/SharedAddressComponent"
+                            },
+                            "currentStatus": {
+                              "type": "string",
+                              "enum": [
+                                "pending-validation",
+                                "validated",
+                                "registrations-opened",
+                                "registrations-closed",
+                                "started",
+                                "completed",
+                                "cancelled"
+                              ]
+                            },
+                            "gamesFormat": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -23085,19 +23097,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "currentStatus": {
-                              "type": "string",
-                              "enum": [
-                                "pending",
-                                "validated",
-                                "ongoing",
-                                "completed",
-                                "cancelled"
-                              ]
-                            },
-                            "gameFormat": {
-                              "type": "string"
-                            },
                             "teams": {
                               "type": "array",
                               "items": {
@@ -23114,6 +23113,21 @@
                             },
                             "address": {
                               "$ref": "#/components/schemas/SharedAddressComponent"
+                            },
+                            "currentStatus": {
+                              "type": "string",
+                              "enum": [
+                                "pending-validation",
+                                "validated",
+                                "registrations-opened",
+                                "registrations-closed",
+                                "started",
+                                "completed",
+                                "cancelled"
+                              ]
+                            },
+                            "gamesFormat": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -23807,7 +23821,6 @@
               "startDate",
               "endDate",
               "isMaster",
-              "currentStatus",
               "address"
             ],
             "type": "object",
@@ -23889,19 +23902,6 @@
               "prizeMoney": {
                 "type": "integer"
               },
-              "currentStatus": {
-                "type": "string",
-                "enum": [
-                  "pending",
-                  "validated",
-                  "ongoing",
-                  "completed",
-                  "cancelled"
-                ]
-              },
-              "gameFormat": {
-                "type": "string"
-              },
               "teams": {
                 "type": "array",
                 "items": {
@@ -23918,6 +23918,21 @@
               },
               "address": {
                 "$ref": "#/components/schemas/SharedAddressComponent"
+              },
+              "currentStatus": {
+                "type": "string",
+                "enum": [
+                  "pending-validation",
+                  "validated",
+                  "registrations-opened",
+                  "registrations-closed",
+                  "started",
+                  "completed",
+                  "cancelled"
+                ]
+              },
+              "gamesFormat": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -23981,7 +23996,6 @@
           "startDate",
           "endDate",
           "isMaster",
-          "currentStatus",
           "address"
         ],
         "properties": {
@@ -25257,19 +25271,6 @@
                                     "prizeMoney": {
                                       "type": "integer"
                                     },
-                                    "currentStatus": {
-                                      "type": "string",
-                                      "enum": [
-                                        "pending",
-                                        "validated",
-                                        "ongoing",
-                                        "completed",
-                                        "cancelled"
-                                      ]
-                                    },
-                                    "gameFormat": {
-                                      "type": "string"
-                                    },
                                     "teams": {
                                       "type": "array",
                                       "items": {
@@ -25286,6 +25287,21 @@
                                     },
                                     "address": {
                                       "$ref": "#/components/schemas/SharedAddressComponent"
+                                    },
+                                    "currentStatus": {
+                                      "type": "string",
+                                      "enum": [
+                                        "pending-validation",
+                                        "validated",
+                                        "registrations-opened",
+                                        "registrations-closed",
+                                        "started",
+                                        "completed",
+                                        "cancelled"
+                                      ]
+                                    },
+                                    "gamesFormat": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -26202,19 +26218,6 @@
           "prizeMoney": {
             "type": "integer"
           },
-          "currentStatus": {
-            "type": "string",
-            "enum": [
-              "pending",
-              "validated",
-              "ongoing",
-              "completed",
-              "cancelled"
-            ]
-          },
-          "gameFormat": {
-            "type": "string"
-          },
           "teams": {
             "type": "array",
             "items": {
@@ -26231,6 +26234,21 @@
           },
           "address": {
             "$ref": "#/components/schemas/SharedAddressComponent"
+          },
+          "currentStatus": {
+            "type": "string",
+            "enum": [
+              "pending-validation",
+              "validated",
+              "registrations-opened",
+              "registrations-closed",
+              "started",
+              "completed",
+              "cancelled"
+            ]
+          },
+          "gamesFormat": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",

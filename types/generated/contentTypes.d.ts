@@ -765,13 +765,19 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     currentStatus: Schema.Attribute.Enumeration<
-      ['pending', 'validated', 'ongoing', 'completed', 'cancelled']
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'pending'>;
+      [
+        'pending-validation',
+        'validated',
+        'registrations-opened',
+        'registrations-closed',
+        'started',
+        'completed',
+        'cancelled',
+      ]
+    >;
     description: Schema.Attribute.Text;
     endDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
-    gameFormat: Schema.Attribute.String;
+    gamesFormat: Schema.Attribute.RichText;
     isMaster: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;

@@ -67,21 +67,6 @@
     "prizeMoney": {
       "type": "integer"
     },
-    "currentStatus": {
-      "type": "enumeration",
-      "required": true,
-      "default": "pending",
-      "enum": [
-        "pending",
-        "validated",
-        "ongoing",
-        "completed",
-        "cancelled"
-      ]
-    },
-    "gameFormat": {
-      "type": "string"
-    },
     "teams": {
       "type": "relation",
       "relation": "oneToMany",
@@ -93,6 +78,21 @@
       "component": "shared.address",
       "repeatable": false,
       "required": true
+    },
+    "currentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending-validation",
+        "validated",
+        "registrations-opened",
+        "registrations-closed",
+        "started",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "gamesFormat": {
+      "type": "richtext"
     }
   }
 }
