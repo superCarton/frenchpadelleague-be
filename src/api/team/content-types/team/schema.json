@@ -35,6 +35,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::payment.payment"
+    },
+    "name": {
+      "type": "string",
+      "required": true
     }
   }
 }

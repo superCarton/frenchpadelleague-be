@@ -738,6 +738,7 @@ export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::team.team'> &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     payments: Schema.Attribute.Relation<'oneToMany', 'api::payment.payment'>;
     playerA: Schema.Attribute.Relation<'oneToOne', 'api::player.player'>;
     playerB: Schema.Attribute.Relation<'oneToOne', 'api::player.player'>;

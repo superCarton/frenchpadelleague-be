@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-08-21T18:11:33.517Z"
+    "x-generation-date": "2025-08-22T17:40:15.984Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -7584,6 +7584,9 @@
                                           }
                                         }
                                       },
+                                      "name": {
+                                        "type": "string"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -9719,6 +9722,9 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "name": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -13929,6 +13935,9 @@
                   }
                 }
               },
+              "name": {
+                "type": "string"
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -16043,6 +16052,9 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "name": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -18589,6 +18601,9 @@
                                             }
                                           }
                                         }
+                                      },
+                                      "name": {
+                                        "type": "string"
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -21249,6 +21264,9 @@
                                           }
                                         }
                                       },
+                                      "name": {
+                                        "type": "string"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -22388,7 +22406,8 @@
         "properties": {
           "data": {
             "required": [
-              "confirmed"
+              "confirmed",
+              "name"
             ],
             "type": "object",
             "properties": {
@@ -22441,6 +22460,9 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "name": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -22501,7 +22523,8 @@
       "Team": {
         "type": "object",
         "required": [
-          "confirmed"
+          "confirmed",
+          "name"
         ],
         "properties": {
           "id": {
@@ -23871,6 +23894,9 @@
                                           }
                                         }
                                       },
+                                      "name": {
+                                        "type": "string"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -24827,6 +24853,9 @@
                 }
               }
             }
+          },
+          "name": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -26540,6 +26569,9 @@
                                       }
                                     }
                                   }
+                                },
+                                "name": {
+                                  "type": "string"
                                 },
                                 "createdAt": {
                                   "type": "string",
