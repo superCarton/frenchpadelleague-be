@@ -47,16 +47,6 @@
     "phoneNumber": {
       "type": "string"
     },
-    "photo": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "description": {
       "type": "text"
     },
@@ -65,6 +55,30 @@
       "relation": "oneToMany",
       "target": "api::player.player",
       "mappedBy": "club"
+    },
+    "instagramLink": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

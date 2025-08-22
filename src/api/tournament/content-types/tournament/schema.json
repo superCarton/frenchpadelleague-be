@@ -73,12 +73,6 @@
       "target": "api::team.team",
       "mappedBy": "tournament"
     },
-    "address": {
-      "type": "component",
-      "component": "shared.address",
-      "repeatable": false,
-      "required": true
-    },
     "currentStatus": {
       "type": "enumeration",
       "enum": [

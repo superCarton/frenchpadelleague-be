@@ -46,7 +46,7 @@
     },
     "elo": {
       "type": "integer",
-      "required": false,
+      "required": true,
       "default": 600,
       "min": 0
     },

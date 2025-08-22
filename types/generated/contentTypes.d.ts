@@ -423,6 +423,8 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
   attributes: {
     address: Schema.Attribute.Component<'shared.address', false>;
     contactEmail: Schema.Attribute.Email;
+    coverImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -430,12 +432,14 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
     hasRestaurant: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
+    instagramLink: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'> &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     name: Schema.Attribute.String;
     phoneNumber: Schema.Attribute.String;
-    photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     players: Schema.Attribute.Relation<'oneToMany', 'api::player.player'>;
     publishedAt: Schema.Attribute.DateTime;
     totalCourts: Schema.Attribute.Integer & Schema.Attribute.Required;
@@ -450,6 +454,7 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    website: Schema.Attribute.String;
   };
 }
 
@@ -646,6 +651,7 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     elo: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
           min: 0;
@@ -757,8 +763,6 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    address: Schema.Attribute.Component<'shared.address', false> &
-      Schema.Attribute.Required;
     allocatedCourts: Schema.Attribute.Integer;
     club: Schema.Attribute.Relation<'manyToOne', 'api::club.club'>;
     createdAt: Schema.Attribute.DateTime;
