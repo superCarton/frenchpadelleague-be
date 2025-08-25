@@ -21,12 +21,6 @@
       "relation": "oneToOne",
       "target": "api::player.player"
     },
-    "tournament": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::tournament.tournament",
-      "inversedBy": "teams"
-    },
     "confirmed": {
       "type": "boolean",
       "required": true
@@ -39,6 +33,12 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "tournament": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tournament.tournament",
+      "inversedBy": "teams"
     }
   }
 }

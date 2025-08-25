@@ -438,7 +438,7 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     logo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
-    name: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     phoneNumber: Schema.Attribute.String;
     players: Schema.Attribute.Relation<'oneToMany', 'api::player.player'>;
     publishedAt: Schema.Attribute.DateTime;
@@ -455,6 +455,47 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
       'plugin::users-permissions.user'
     >;
     website: Schema.Attribute.String;
+  };
+}
+
+export interface ApiGameFormatGameFormat extends Struct.CollectionTypeSchema {
+  collectionName: 'game_formats';
+  info: {
+    displayName: 'GameFormat';
+    pluralName: 'game-formats';
+    singularName: 'game-format';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String & Schema.Attribute.Required;
+    lastSetSuperTie: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::game-format.game-format'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    nbGamesInSet: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<6>;
+    nbOfSets: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<3>;
+    noAd: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -489,10 +530,6 @@ export interface ApiLeagueLeague extends Struct.CollectionTypeSchema {
     players: Schema.Attribute.Relation<'oneToMany', 'api::player.player'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    tournaments: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::tournament.tournament'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -514,6 +551,10 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    game_format: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::game-format.game-format'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::match.match'> &
       Schema.Attribute.Private;
@@ -523,13 +564,15 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     scheduledDate: Schema.Attribute.DateTime;
-    scoreTeamA: Schema.Attribute.JSON;
-    scoreTeamB: Schema.Attribute.JSON;
     teamA: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
     teamB: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
-    tournament: Schema.Attribute.Relation<
+    tournament_group: Schema.Attribute.Relation<
       'manyToOne',
-      'api::tournament.tournament'
+      'api::tournament-group.tournament-group'
+    >;
+    tournament_phase: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::tournament-phase.tournament-phase'
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -570,7 +613,7 @@ export interface ApiNewsletterNewsletter extends Struct.CollectionTypeSchema {
     singularName: 'newsletter';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -706,10 +749,6 @@ export interface ApiRefereeReferee extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
-    tournaments: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::tournament.tournament'
-    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -753,6 +792,90 @@ export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTournamentGroupTournamentGroup
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tournament_groups';
+  info: {
+    displayName: 'TournamentGroup';
+    pluralName: 'tournament-groups';
+    singularName: 'tournament-group';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tournament-group.tournament-group'
+    > &
+      Schema.Attribute.Private;
+    matches: Schema.Attribute.Relation<'oneToMany', 'api::match.match'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    nbTeamsQualified: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    teams: Schema.Attribute.Relation<'oneToMany', 'api::team.team'>;
+    tournament_phase: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::tournament-phase.tournament-phase'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTournamentPhaseTournamentPhase
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tournament_phases';
+  info: {
+    displayName: 'TournamentPhase';
+    pluralName: 'tournament-phases';
+    singularName: 'tournament-phase';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    game_format: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::game-format.game-format'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tournament-phase.tournament-phase'
+    > &
+      Schema.Attribute.Private;
+    matches: Schema.Attribute.Relation<'oneToMany', 'api::match.match'>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    order: Schema.Attribute.Integer & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    tournament: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::tournament.tournament'
+    >;
+    tournament_groups: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tournament-group.tournament-group'
+    >;
+    type: Schema.Attribute.Enumeration<
+      ['group-stage', 'knockout', 'classification']
+    > &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
   collectionName: 'tournaments';
   info: {
@@ -779,29 +902,30 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
         'completed',
         'cancelled',
       ]
-    >;
-    description: Schema.Attribute.Text;
-    endDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
-    gamesFormat: Schema.Attribute.RichText;
-    isMaster: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
-    league: Schema.Attribute.Relation<'manyToOne', 'api::league.league'>;
+    > &
+      Schema.Attribute.Required;
+    description: Schema.Attribute.String;
+    endDate: Schema.Attribute.DateTime;
+    league: Schema.Attribute.Relation<'oneToOne', 'api::league.league'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::tournament.tournament'
     > &
       Schema.Attribute.Private;
-    matches: Schema.Attribute.Relation<'oneToMany', 'api::match.match'>;
     maxTeams: Schema.Attribute.Integer;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     prizeMoney: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
-    referee: Schema.Attribute.Relation<'manyToOne', 'api::referee.referee'>;
+    referee: Schema.Attribute.Relation<'oneToOne', 'api::referee.referee'>;
     registrationDeadline: Schema.Attribute.DateTime;
     registrationFee: Schema.Attribute.Integer;
     startDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
     teams: Schema.Attribute.Relation<'oneToMany', 'api::team.team'>;
+    tournament_phases: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tournament-phase.tournament-phase'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1321,6 +1445,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::club.club': ApiClubClub;
+      'api::game-format.game-format': ApiGameFormatGameFormat;
       'api::league.league': ApiLeagueLeague;
       'api::match.match': ApiMatchMatch;
       'api::me.me': ApiMeMe;
@@ -1329,6 +1454,8 @@ declare module '@strapi/strapi' {
       'api::player.player': ApiPlayerPlayer;
       'api::referee.referee': ApiRefereeReferee;
       'api::team.team': ApiTeamTeam;
+      'api::tournament-group.tournament-group': ApiTournamentGroupTournamentGroup;
+      'api::tournament-phase.tournament-phase': ApiTournamentPhaseTournamentPhase;
       'api::tournament.tournament': ApiTournamentTournament;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

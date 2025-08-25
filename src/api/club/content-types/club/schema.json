@@ -18,13 +18,8 @@
       "mappedBy": "club"
     },
     "name": {
-      "type": "string"
-    },
-    "tournaments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tournament.tournament",
-      "mappedBy": "club"
+      "type": "string",
+      "required": true
     },
     "address": {
       "type": "component",
@@ -79,6 +74,12 @@
         "images",
         "files"
       ]
+    },
+    "tournaments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tournament.tournament",
+      "mappedBy": "club"
     }
   }
 }

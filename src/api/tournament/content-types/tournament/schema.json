@@ -11,61 +11,22 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "club": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::club.club",
-      "inversedBy": "tournaments"
+    "name": {
+      "type": "string",
+      "required": true
     },
     "startDate": {
       "type": "datetime",
       "required": true
     },
     "endDate": {
-      "type": "datetime",
-      "required": true
-    },
-    "registrationDeadline": {
       "type": "datetime"
     },
-    "league": {
+    "club": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::league.league",
+      "target": "api::club.club",
       "inversedBy": "tournaments"
-    },
-    "referee": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::referee.referee",
-      "inversedBy": "tournaments"
-    },
-    "matches": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::match.match",
-      "mappedBy": "tournament"
-    },
-    "isMaster": {
-      "type": "boolean",
-      "required": true,
-      "default": false
-    },
-    "maxTeams": {
-      "type": "integer",
-      "required": false
-    },
-    "registrationFee": {
-      "type": "integer"
-    },
-    "description": {
-      "type": "text"
-    },
-    "allocatedCourts": {
-      "type": "integer"
-    },
-    "prizeMoney": {
-      "type": "integer"
     },
     "teams": {
       "type": "relation",
@@ -73,8 +34,20 @@
       "target": "api::team.team",
       "mappedBy": "tournament"
     },
+    "league": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::league.league"
+    },
+    "tournament_phases": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tournament-phase.tournament-phase",
+      "mappedBy": "tournament"
+    },
     "currentStatus": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "pending-validation",
         "validated",
@@ -85,8 +58,28 @@
         "cancelled"
       ]
     },
-    "gamesFormat": {
-      "type": "richtext"
+    "description": {
+      "type": "string"
+    },
+    "referee": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::referee.referee"
+    },
+    "registrationDeadline": {
+      "type": "datetime"
+    },
+    "registrationFee": {
+      "type": "integer"
+    },
+    "maxTeams": {
+      "type": "integer"
+    },
+    "prizeMoney": {
+      "type": "integer"
+    },
+    "allocatedCourts": {
+      "type": "integer"
     }
   }
 }

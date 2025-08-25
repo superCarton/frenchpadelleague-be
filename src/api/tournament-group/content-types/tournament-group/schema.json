@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tournament_groups",
+  "info": {
+    "singularName": "tournament-group",
+    "pluralName": "tournament-groups",
+    "displayName": "TournamentGroup"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "teams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team.team"
+    },
+    "matches": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::match.match",
+      "mappedBy": "tournament_group"
+    },
+    "tournament_phase": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tournament-phase.tournament-phase",
+      "inversedBy": "tournament_groups"
+    },
+    "nbTeamsQualified": {
+      "type": "integer"
+    }
+  }
+}

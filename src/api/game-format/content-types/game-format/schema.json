@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "game_formats",
+  "info": {
+    "singularName": "game-format",
+    "pluralName": "game-formats",
+    "displayName": "GameFormat"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "noAd": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "nbOfSets": {
+      "type": "integer",
+      "required": true,
+      "default": 3
+    },
+    "lastSetSuperTie": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "nbGamesInSet": {
+      "type": "integer",
+      "required": true,
+      "default": 6
+    }
+  }
+}

@@ -75,7 +75,11 @@ export default factories.createCoreController("api::team.team", ({ strapi }) => 
             confirmed: false,
             name: `${currentPlayer.lastname} - ${partner.lastname}`
         },
-        populate: ["playerA", "playerB", "tournament"],
+        populate: [
+            "playerA", 
+            "playerB", 
+            "tournament"
+        ],
       });
 
     return ctx.send(team);

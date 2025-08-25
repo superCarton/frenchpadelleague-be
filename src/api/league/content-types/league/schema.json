@@ -16,12 +16,6 @@
       "required": true,
       "unique": true
     },
-    "tournaments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tournament.tournament",
-      "mappedBy": "league"
-    },
     "players": {
       "type": "relation",
       "relation": "oneToMany",

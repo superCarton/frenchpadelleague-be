@@ -25,18 +25,6 @@
       "type": "datetime",
       "required": true
     },
-    "tournament": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::tournament.tournament",
-      "inversedBy": "matches"
-    },
-    "scoreTeamA": {
-      "type": "json"
-    },
-    "scoreTeamB": {
-      "type": "json"
-    },
     "winner": {
       "type": "relation",
       "relation": "oneToOne",
@@ -53,6 +41,23 @@
     },
     "scheduledDate": {
       "type": "datetime"
+    },
+    "tournament_group": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tournament-group.tournament-group",
+      "inversedBy": "matches"
+    },
+    "tournament_phase": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tournament-phase.tournament-phase",
+      "inversedBy": "matches"
+    },
+    "game_format": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::game-format.game-format"
     }
   }
 }

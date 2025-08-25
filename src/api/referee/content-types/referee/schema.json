@@ -17,12 +17,6 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "referee"
     },
-    "tournaments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tournament.tournament",
-      "mappedBy": "referee"
-    },
     "firstname": {
       "type": "string",
       "required": true
