@@ -23,7 +23,7 @@
     },
     "date": {
       "type": "datetime",
-      "required": true
+      "required": false
     },
     "winner": {
       "type": "relation",

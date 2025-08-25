@@ -550,7 +550,7 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    date: Schema.Attribute.DateTime;
     game_format: Schema.Attribute.Relation<
       'oneToOne',
       'api::game-format.game-format'

@@ -15,7 +15,7 @@ export default factories.createCoreController('api::newsletter.newsletter', {
       return ctx.badRequest('Cet email est déjà inscrit');
     }
 
-    const entry = await strapi.db.query('api::newsletter.newsletter').create({
+    const entry = await strapi.documents('api::newsletter.newsletter').create({
       data: { email },
     });
 

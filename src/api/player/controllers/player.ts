@@ -38,14 +38,29 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         confirmed: true,
       });
 
+    const elo = playerData.elo || 600;
+
+    // Trouve la league correspondant à cet elo
+    const matchingLeague = await strapi.db.query("api::league.league").findOne({
+      where: {
+        minElo: { $lte: elo },
+        maxElo: { $gte: elo },
+      },
+    });
+
+    if (!matchingLeague) {
+      return ctx.badRequest(`Aucune league trouvée pour l'elo ${elo}`);
+    }
+
     // Crée le player et lie le user
-    const newPlayer = await strapi.db.query('api::player.player').create({
+    const newPlayer = await strapi.documents('api::player.player').create({
       data: {
         firstname,
         lastname,
         birthdate,
         ...playerData,
         user: newUser.id,
+        league: matchingLeague.id,
       },
     });
 
