@@ -9,10 +9,10 @@ export default factories.createCoreController('api::player.player', ({ strapi })
       return ctx.badRequest('Données manquantes');
     }
 
-    const { email, password, firstname, lastname, birthdate, ...playerData } = data;
+    const { email, password, firstname, lastname, birthdate, gender, ...playerData } = data;
 
-    if (!email || !password || !firstname || !lastname || !birthdate) {
-      return ctx.badRequest('Email, mot de passe, prénom, nom et date de naissance sont requis');
+    if (!email || !password || !firstname || !lastname || !birthdate || !gender) {
+      return ctx.badRequest('Email, mot de passe, genre, prénom, nom et date de naissance sont requis');
     }
 
     // Vérifie que l'email n'est pas déjà utilisé
@@ -58,6 +58,7 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         firstname,
         lastname,
         birthdate,
+        gender,
         ...playerData,
         user: newUser.id,
         league: matchingLeague.id,

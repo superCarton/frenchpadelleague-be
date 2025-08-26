@@ -703,6 +703,8 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
       > &
       Schema.Attribute.DefaultTo<600>;
     firstname: Schema.Attribute.String & Schema.Attribute.Required;
+    gender: Schema.Attribute.Enumeration<['male', 'female']> &
+      Schema.Attribute.Required;
     lastname: Schema.Attribute.String & Schema.Attribute.Required;
     league: Schema.Attribute.Relation<'manyToOne', 'api::league.league'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -906,6 +908,8 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     description: Schema.Attribute.String;
     endDate: Schema.Attribute.DateTime;
+    gender: Schema.Attribute.Enumeration<['male', 'female', 'mixed']> &
+      Schema.Attribute.Required;
     league: Schema.Attribute.Relation<'oneToOne', 'api::league.league'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

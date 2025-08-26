@@ -67,6 +67,14 @@
       "relation": "oneToMany",
       "target": "api::payment.payment",
       "mappedBy": "payer"
+    },
+    "gender": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "male",
+        "female"
+      ]
     }
   }
 }

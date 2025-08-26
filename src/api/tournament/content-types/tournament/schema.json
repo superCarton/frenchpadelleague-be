@@ -80,6 +80,15 @@
     },
     "allocatedCourts": {
       "type": "integer"
+    },
+    "gender": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "male",
+        "female",
+        "mixed"
+      ]
     }
   }
 }

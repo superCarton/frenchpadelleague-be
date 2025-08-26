@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-08-25T13:40:35.070Z"
+    "x-generation-date": "2025-08-26T15:50:59.001Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -9881,6 +9881,14 @@
                             "allocatedCourts": {
                               "type": "integer"
                             },
+                            "gender": {
+                              "type": "string",
+                              "enum": [
+                                "male",
+                                "female",
+                                "mixed"
+                              ]
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -10168,6 +10176,13 @@
                         }
                       }
                     }
+                  },
+                  "gender": {
+                    "type": "string",
+                    "enum": [
+                      "male",
+                      "female"
+                    ]
                   },
                   "createdAt": {
                     "type": "string",
@@ -13490,6 +13505,14 @@
                               "allocatedCourts": {
                                 "type": "integer"
                               },
+                              "gender": {
+                                "type": "string",
+                                "enum": [
+                                  "male",
+                                  "female",
+                                  "mixed"
+                                ]
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -13852,6 +13875,13 @@
                       }
                     }
                   }
+                },
+                "gender": {
+                  "type": "string",
+                  "enum": [
+                    "male",
+                    "female"
+                  ]
                 },
                 "createdAt": {
                   "type": "string",
@@ -16223,6 +16253,14 @@
                                 "allocatedCourts": {
                                   "type": "integer"
                                 },
+                                "gender": {
+                                  "type": "string",
+                                  "enum": [
+                                    "male",
+                                    "female",
+                                    "mixed"
+                                  ]
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -16679,6 +16717,13 @@
                         }
                       }
                     }
+                  },
+                  "gender": {
+                    "type": "string",
+                    "enum": [
+                      "male",
+                      "female"
+                    ]
                   },
                   "createdAt": {
                     "type": "string",
@@ -19687,6 +19732,14 @@
                             "allocatedCourts": {
                               "type": "integer"
                             },
+                            "gender": {
+                              "type": "string",
+                              "enum": [
+                                "male",
+                                "female",
+                                "mixed"
+                              ]
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -20050,6 +20103,13 @@
                   }
                 }
               },
+              "gender": {
+                "type": "string",
+                "enum": [
+                  "male",
+                  "female"
+                ]
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -20210,7 +20270,8 @@
               "elo",
               "firstname",
               "lastname",
-              "birthdate"
+              "birthdate",
+              "gender"
             ],
             "type": "object",
             "properties": {
@@ -20299,6 +20360,13 @@
                   "example": "string or id"
                 }
               },
+              "gender": {
+                "type": "string",
+                "enum": [
+                  "male",
+                  "female"
+                ]
+              },
               "locale": {
                 "type": "string"
               },
@@ -20361,7 +20429,8 @@
           "elo",
           "firstname",
           "lastname",
-          "birthdate"
+          "birthdate",
+          "gender"
         ],
         "properties": {
           "id": {
@@ -22508,6 +22577,14 @@
                             "allocatedCourts": {
                               "type": "integer"
                             },
+                            "gender": {
+                              "type": "string",
+                              "enum": [
+                                "male",
+                                "female",
+                                "mixed"
+                              ]
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -22795,6 +22872,13 @@
                         }
                       }
                     }
+                  },
+                  "gender": {
+                    "type": "string",
+                    "enum": [
+                      "male",
+                      "female"
+                    ]
                   },
                   "createdAt": {
                     "type": "string",
@@ -23115,6 +23199,13 @@
                 }
               }
             }
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -25428,6 +25519,14 @@
                             "allocatedCourts": {
                               "type": "integer"
                             },
+                            "gender": {
+                              "type": "string",
+                              "enum": [
+                                "male",
+                                "female",
+                                "mixed"
+                              ]
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -25715,6 +25814,13 @@
                         }
                       }
                     }
+                  },
+                  "gender": {
+                    "type": "string",
+                    "enum": [
+                      "male",
+                      "female"
+                    ]
                   },
                   "createdAt": {
                     "type": "string",
@@ -28316,6 +28422,14 @@
                             "allocatedCourts": {
                               "type": "integer"
                             },
+                            "gender": {
+                              "type": "string",
+                              "enum": [
+                                "male",
+                                "female",
+                                "mixed"
+                              ]
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -28679,6 +28793,13 @@
                   }
                 }
               },
+              "gender": {
+                "type": "string",
+                "enum": [
+                  "male",
+                  "female"
+                ]
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -28848,7 +28969,8 @@
             "required": [
               "name",
               "startDate",
-              "currentStatus"
+              "currentStatus",
+              "gender"
             ],
             "type": "object",
             "properties": {
@@ -28955,6 +29077,14 @@
               "allocatedCourts": {
                 "type": "integer"
               },
+              "gender": {
+                "type": "string",
+                "enum": [
+                  "male",
+                  "female",
+                  "mixed"
+                ]
+              },
               "locale": {
                 "type": "string"
               },
@@ -29016,7 +29146,8 @@
         "required": [
           "name",
           "startDate",
-          "currentStatus"
+          "currentStatus",
+          "gender"
         ],
         "properties": {
           "id": {
@@ -30697,6 +30828,14 @@
                                     "allocatedCourts": {
                                       "type": "integer"
                                     },
+                                    "gender": {
+                                      "type": "string",
+                                      "enum": [
+                                        "male",
+                                        "female",
+                                        "mixed"
+                                      ]
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -31094,6 +31233,13 @@
                             }
                           }
                         }
+                      },
+                      "gender": {
+                        "type": "string",
+                        "enum": [
+                          "male",
+                          "female"
+                        ]
                       },
                       "createdAt": {
                         "type": "string",
@@ -31670,6 +31816,14 @@
           },
           "allocatedCourts": {
             "type": "integer"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female",
+              "mixed"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -33814,6 +33968,14 @@
                                   "allocatedCourts": {
                                     "type": "integer"
                                   },
+                                  "gender": {
+                                    "type": "string",
+                                    "enum": [
+                                      "male",
+                                      "female",
+                                      "mixed"
+                                    ]
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -34270,6 +34432,13 @@
                           }
                         }
                       }
+                    },
+                    "gender": {
+                      "type": "string",
+                      "enum": [
+                        "male",
+                        "female"
+                      ]
                     },
                     "createdAt": {
                       "type": "string",
@@ -36549,6 +36718,14 @@
                                         "allocatedCourts": {
                                           "type": "integer"
                                         },
+                                        "gender": {
+                                          "type": "string",
+                                          "enum": [
+                                            "male",
+                                            "female",
+                                            "mixed"
+                                          ]
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -37005,6 +37182,13 @@
                                 }
                               }
                             }
+                          },
+                          "gender": {
+                            "type": "string",
+                            "enum": [
+                              "male",
+                              "female"
+                            ]
                           },
                           "createdAt": {
                             "type": "string",
