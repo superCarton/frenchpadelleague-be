@@ -8,6 +8,10 @@ export default factories.createCoreController("api::team.team", ({ strapi }) => 
       return ctx.unauthorized("Vous devez être connecté.");
     }
 
+    if (!user.confirmed) {
+      return ctx.unauthorized("Vous devez valider votre email pour vous inscrire à un tournoi.");
+    }
+
     const { tournamentId, partnerId } = ctx.request.body as {
       tournamentId: string;
       partnerId: string;

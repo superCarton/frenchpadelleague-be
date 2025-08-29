@@ -19,3 +19,16 @@ export const registerNewsletterEmail = (userEmail: string) => {
         `
     });
 };
+
+export const confirmationEmail = (userEmail: string, userPrettyName: string, confirmationCode: string) => {
+    const confirmationUrl = `${process.env.FRONTEND_URL}/confirm-email?code=${confirmationCode}`;
+
+    return strapi.plugin('email').service('email').send({
+      to: userEmail,
+      subject: 'Confirmation de l\'email',
+      html: `
+          <p>Bonjour ${userPrettyName},</p>
+          <p>Pour confirmer ton email auprès de French Padel League, clique sur ce lien :<br/><a href="${confirmationUrl}">Confirmer l'email</a></p>
+      `
+  });
+}

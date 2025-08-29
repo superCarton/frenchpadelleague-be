@@ -1,5 +1,7 @@
 import { factories } from '@strapi/strapi';
 import type { Context } from 'koa';
+import { confirmationEmail } from '../../../utils/emails';
+import crypto from "crypto";
 
 export default factories.createCoreController('api::player.player', ({ strapi }) => ({
   async create(ctx) {
@@ -24,6 +26,9 @@ export default factories.createCoreController('api::player.player', ({ strapi })
       return ctx.badRequest('Un utilisateur avec cet email existe déjà');
     }
 
+    // 🔑 Génère un token de confirmation
+    const confirmationToken = crypto.randomBytes(20).toString("hex");
+
     // Crée le user via le service pour avoir le hash et les hooks
     const newUser = await strapi
       .plugin('users-permissions')
@@ -35,7 +40,8 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         provider: 'local',
         role: 1,
         blocked: false,
-        confirmed: true,
+        confirmed: false,
+        confirmationToken
       });
 
     const elo = playerData.elo || 600;
@@ -64,6 +70,9 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         league: matchingLeague.id,
       },
     });
+
+    // Envoie l'email de confirmation
+    await confirmationEmail(newUser.email, firstname, confirmationToken);
 
     // Génère le token JWT
     const token = strapi
