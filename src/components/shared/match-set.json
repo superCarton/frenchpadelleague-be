@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_match_sets",
+  "info": {
+    "displayName": "MatchSet"
+  },
+  "options": {},
+  "attributes": {
+    "teamAScore": {
+      "type": "integer",
+      "required": true
+    },
+    "teamBScore": {
+      "type": "integer",
+      "required": true
+    }
+  },
+  "config": {}
+}

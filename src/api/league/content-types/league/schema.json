@@ -16,12 +16,6 @@
       "required": true,
       "unique": true
     },
-    "players": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::player.player",
-      "mappedBy": "league"
-    },
     "minElo": {
       "type": "integer",
       "required": true

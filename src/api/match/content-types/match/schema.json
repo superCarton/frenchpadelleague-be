@@ -11,12 +11,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "teamA": {
+    "team_a": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::team.team"
     },
-    "teamB": {
+    "team_b": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::team.team"
@@ -24,11 +24,6 @@
     "date": {
       "type": "datetime",
       "required": false
-    },
-    "winner": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::team.team"
     },
     "matchStatus": {
       "type": "enumeration",
@@ -58,6 +53,26 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::game-format.game-format"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "tournament": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tournament.tournament",
+      "inversedBy": "matches"
+    },
+    "score": {
+      "type": "component",
+      "component": "shared.match-set",
+      "repeatable": true
+    },
+    "winner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::team.team"
     }
   }
 }

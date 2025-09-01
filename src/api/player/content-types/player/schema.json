@@ -30,9 +30,8 @@
     },
     "league": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::league.league",
-      "inversedBy": "players"
+      "relation": "oneToOne",
+      "target": "api::league.league"
     },
     "photo": {
       "type": "media",
@@ -75,6 +74,9 @@
         "male",
         "female"
       ]
+    },
+    "phoneNumber": {
+      "type": "string"
     }
   }
 }

@@ -527,7 +527,6 @@ export interface ApiLeagueLeague extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     maxElo: Schema.Attribute.Integer & Schema.Attribute.Required;
     minElo: Schema.Attribute.Integer & Schema.Attribute.Required;
-    players: Schema.Attribute.Relation<'oneToMany', 'api::player.player'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -562,10 +561,16 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
       ['scheduled', 'started', 'finished']
     > &
       Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     scheduledDate: Schema.Attribute.DateTime;
-    teamA: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
-    teamB: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
+    score: Schema.Attribute.Component<'shared.match-set', true>;
+    team_a: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
+    team_b: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
+    tournament: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::tournament.tournament'
+    >;
     tournament_group: Schema.Attribute.Relation<
       'manyToOne',
       'api::tournament-group.tournament-group'
@@ -706,7 +711,7 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     gender: Schema.Attribute.Enumeration<['male', 'female']> &
       Schema.Attribute.Required;
     lastname: Schema.Attribute.String & Schema.Attribute.Required;
-    league: Schema.Attribute.Relation<'manyToOne', 'api::league.league'>;
+    league: Schema.Attribute.Relation<'oneToOne', 'api::league.league'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -715,40 +720,7 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     matchesHistory: Schema.Attribute.Relation<'oneToMany', 'api::match.match'>;
     payments: Schema.Attribute.Relation<'oneToMany', 'api::payment.payment'>;
-    photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    user: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-  };
-}
-
-export interface ApiRefereeReferee extends Struct.CollectionTypeSchema {
-  collectionName: 'referees';
-  info: {
-    displayName: 'Referee';
-    pluralName: 'referees';
-    singularName: 'referee';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    firstname: Schema.Attribute.String & Schema.Attribute.Required;
-    lastname: Schema.Attribute.String & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::referee.referee'
-    > &
-      Schema.Attribute.Private;
+    phoneNumber: Schema.Attribute.String;
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -917,11 +889,11 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
       'api::tournament.tournament'
     > &
       Schema.Attribute.Private;
+    matches: Schema.Attribute.Relation<'oneToMany', 'api::match.match'>;
     maxTeams: Schema.Attribute.Integer;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     prizeMoney: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
-    referee: Schema.Attribute.Relation<'oneToOne', 'api::referee.referee'>;
     registrationDeadline: Schema.Attribute.DateTime;
     registrationFee: Schema.Attribute.Integer;
     startDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
@@ -1419,7 +1391,6 @@ export interface PluginUsersPermissionsUser
     player: Schema.Attribute.Relation<'oneToOne', 'api::player.player'>;
     provider: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    referee: Schema.Attribute.Relation<'oneToOne', 'api::referee.referee'>;
     resetPasswordToken: Schema.Attribute.String & Schema.Attribute.Private;
     role: Schema.Attribute.Relation<
       'manyToOne',
@@ -1456,7 +1427,6 @@ declare module '@strapi/strapi' {
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
       'api::payment.payment': ApiPaymentPayment;
       'api::player.player': ApiPlayerPlayer;
-      'api::referee.referee': ApiRefereeReferee;
       'api::team.team': ApiTeamTeam;
       'api::tournament-group.tournament-group': ApiTournamentGroupTournamentGroup;
       'api::tournament-phase.tournament-phase': ApiTournamentPhaseTournamentPhase;

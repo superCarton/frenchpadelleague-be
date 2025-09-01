@@ -61,11 +61,6 @@
     "description": {
       "type": "string"
     },
-    "referee": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::referee.referee"
-    },
     "registrationDeadline": {
       "type": "datetime"
     },
@@ -89,6 +84,12 @@
         "female",
         "mixed"
       ]
+    },
+    "matches": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::match.match",
+      "mappedBy": "tournament"
     }
   }
 }

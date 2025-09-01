@@ -18,6 +18,17 @@ export interface SharedAddress extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedMatchSet extends Struct.ComponentSchema {
+  collectionName: 'components_shared_match_sets';
+  info: {
+    displayName: 'MatchSet';
+  };
+  attributes: {
+    teamAScore: Schema.Attribute.Integer & Schema.Attribute.Required;
+    teamBScore: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -84,6 +95,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.address': SharedAddress;
+      'shared.match-set': SharedMatchSet;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
