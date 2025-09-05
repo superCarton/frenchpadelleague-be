@@ -1,4 +1,5 @@
 import { factories } from "@strapi/strapi";
+import { registerTournamentEmail } from "../../../utils/emails";
 
 export default factories.createCoreController("api::team.team", ({ strapi }) => ({
 
@@ -43,7 +44,7 @@ export default factories.createCoreController("api::team.team", ({ strapi }) => 
       where: { documentId: tournamentId },
       populate: {
         league: true,
-        teams: { populate: ["players"] },
+        teams: { populate: ["playerA", "playerB"] },
       },
     });
 
@@ -64,7 +65,7 @@ export default factories.createCoreController("api::team.team", ({ strapi }) => 
     }
 
     const alreadyRegistered = tournament.teams.some((team) =>
-      team.players.some((p) => [currentPlayer.documentId, partner.documentId].includes(p.documentId))
+      [team.playerA.documentId, team.playerB.documentId].some((p) => currentPlayer.documentId === p ||  partner.documentId === p)
     );
 
     if (alreadyRegistered) {
@@ -85,6 +86,9 @@ export default factories.createCoreController("api::team.team", ({ strapi }) => 
             "tournament"
         ],
       });
+
+    registerTournamentEmail(currentPlayer.user.email, currentPlayer.firstname, tournament);
+    registerTournamentEmail(partner.user.email, partner.firstname, tournament);
 
     return ctx.send(team);
   },

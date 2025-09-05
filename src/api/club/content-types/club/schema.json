@@ -80,6 +80,11 @@
       "relation": "oneToMany",
       "target": "api::tournament.tournament",
       "mappedBy": "club"
+    },
+    "nextMatch": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::match.match"
     }
   }
 }

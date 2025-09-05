@@ -439,6 +439,7 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
     logo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+    nextMatch: Schema.Attribute.Relation<'oneToOne', 'api::match.match'>;
     phoneNumber: Schema.Attribute.String;
     players: Schema.Attribute.Relation<'oneToMany', 'api::player.player'>;
     publishedAt: Schema.Attribute.DateTime;
@@ -563,6 +564,9 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    round: Schema.Attribute.Enumeration<
+      ['r32', 'r16', 'quarter', 'semi', 'final']
+    >;
     scheduledDate: Schema.Attribute.DateTime;
     score: Schema.Attribute.Component<'shared.match-set', true>;
     team_a: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;
@@ -894,6 +898,7 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     prizeMoney: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
+    referee: Schema.Attribute.Relation<'oneToOne', 'api::player.player'>;
     registrationDeadline: Schema.Attribute.DateTime;
     registrationFee: Schema.Attribute.Integer;
     startDate: Schema.Attribute.DateTime & Schema.Attribute.Required;

@@ -73,6 +73,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::team.team"
+    },
+    "round": {
+      "type": "enumeration",
+      "enum": [
+        "r32",
+        "r16",
+        "quarter",
+        "semi",
+        "final"
+      ]
     }
   }
 }

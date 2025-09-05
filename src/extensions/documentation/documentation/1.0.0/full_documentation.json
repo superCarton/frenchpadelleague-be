@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-01T20:21:05.757Z"
+    "x-generation-date": "2025-09-05T21:06:46.970Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -7165,6 +7165,17 @@
                   "example": "string or id"
                 }
               },
+              "nextMatch": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
+              },
               "locale": {
                 "type": "string"
               },
@@ -8930,6 +8941,16 @@
                                                   }
                                                 }
                                               },
+                                              "round": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "r32",
+                                                  "r16",
+                                                  "quarter",
+                                                  "semi",
+                                                  "final"
+                                                ]
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -9195,6 +9216,17 @@
                                 }
                               }
                             },
+                            "referee": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -9246,6 +9278,17 @@
                                 }
                               }
                             }
+                          }
+                        }
+                      },
+                      "nextMatch": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
                           }
                         }
                       },
@@ -9921,6 +9964,17 @@
                 "documentId": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "nextMatch": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
               }
             }
           },
@@ -11647,6 +11701,16 @@
                 ],
                 "example": "string or id"
               },
+              "round": {
+                "type": "string",
+                "enum": [
+                  "r32",
+                  "r16",
+                  "quarter",
+                  "semi",
+                  "final"
+                ]
+              },
               "locale": {
                 "type": "string"
               },
@@ -13220,6 +13284,16 @@
                                                       }
                                                     }
                                                   },
+                                                  "round": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "r32",
+                                                      "r16",
+                                                      "quarter",
+                                                      "semi",
+                                                      "final"
+                                                    ]
+                                                  },
                                                   "createdAt": {
                                                     "type": "string",
                                                     "format": "date-time"
@@ -13485,6 +13559,17 @@
                                     }
                                   }
                                 },
+                                "referee": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "number"
+                                    },
+                                    "documentId": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -13536,6 +13621,17 @@
                                     }
                                   }
                                 }
+                              }
+                            }
+                          },
+                          "nextMatch": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
                               }
                             }
                           },
@@ -14179,6 +14275,16 @@
                 "type": "string"
               }
             }
+          },
+          "round": {
+            "type": "string",
+            "enum": [
+              "r32",
+              "r16",
+              "quarter",
+              "semi",
+              "final"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -16523,6 +16629,16 @@
                                                   }
                                                 }
                                               },
+                                              "round": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "r32",
+                                                  "r16",
+                                                  "quarter",
+                                                  "semi",
+                                                  "final"
+                                                ]
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -16788,6 +16904,17 @@
                                 }
                               }
                             },
+                            "referee": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -16839,6 +16966,17 @@
                                 }
                               }
                             }
+                          }
+                        }
+                      },
+                      "nextMatch": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
                           }
                         }
                       },
@@ -19175,6 +19313,16 @@
                                                   }
                                                 }
                                               },
+                                              "round": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "r32",
+                                                  "r16",
+                                                  "quarter",
+                                                  "semi",
+                                                  "final"
+                                                ]
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -19440,6 +19588,17 @@
                                 }
                               }
                             },
+                            "referee": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -19491,6 +19650,17 @@
                                 }
                               }
                             }
+                          }
+                        }
+                      },
+                      "nextMatch": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
                           }
                         }
                       },
@@ -21949,6 +22119,16 @@
                                                   }
                                                 }
                                               },
+                                              "round": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "r32",
+                                                  "r16",
+                                                  "quarter",
+                                                  "semi",
+                                                  "final"
+                                                ]
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -22214,6 +22394,17 @@
                                 }
                               }
                             },
+                            "referee": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -22265,6 +22456,17 @@
                                 }
                               }
                             }
+                          }
+                        }
+                      },
+                      "nextMatch": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
                           }
                         }
                       },
@@ -22863,6 +23065,17 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "referee": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
               },
               "locale": {
                 "type": "string"
@@ -24407,6 +24620,17 @@
                                         }
                                       }
                                     },
+                                    "referee": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "number"
+                                        },
+                                        "documentId": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -24603,6 +24827,16 @@
                                   "type": "string"
                                 }
                               }
+                            },
+                            "round": {
+                              "type": "string",
+                              "enum": [
+                                "r32",
+                                "r16",
+                                "quarter",
+                                "semi",
+                                "final"
+                              ]
                             },
                             "createdAt": {
                               "type": "string",
@@ -25266,6 +25500,17 @@
                   }
                 }
               },
+              "nextMatch": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -25408,6 +25653,17 @@
                 "documentId": {
                   "type": "string"
                 }
+              }
+            }
+          },
+          "referee": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "documentId": {
+                "type": "string"
               }
             }
           },
@@ -27109,6 +27365,16 @@
                                                         }
                                                       }
                                                     },
+                                                    "round": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "r32",
+                                                        "r16",
+                                                        "quarter",
+                                                        "semi",
+                                                        "final"
+                                                      ]
+                                                    },
                                                     "createdAt": {
                                                       "type": "string",
                                                       "format": "date-time"
@@ -27374,6 +27640,17 @@
                                       }
                                     }
                                   },
+                                  "referee": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "number"
+                                      },
+                                      "documentId": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -27425,6 +27702,17 @@
                                       }
                                     }
                                   }
+                                }
+                              }
+                            },
+                            "nextMatch": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
                                 }
                               }
                             },
@@ -29756,6 +30044,16 @@
                                                         }
                                                       }
                                                     },
+                                                    "round": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "r32",
+                                                        "r16",
+                                                        "quarter",
+                                                        "semi",
+                                                        "final"
+                                                      ]
+                                                    },
                                                     "createdAt": {
                                                       "type": "string",
                                                       "format": "date-time"
@@ -29928,6 +30226,17 @@
                                             }
                                           }
                                         },
+                                        "referee": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "documentId": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -29979,6 +30288,17 @@
                                             }
                                           }
                                         }
+                                      }
+                                    }
+                                  },
+                                  "nextMatch": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "number"
+                                      },
+                                      "documentId": {
+                                        "type": "string"
                                       }
                                     }
                                   },

@@ -22,6 +22,7 @@
     "@strapi/provider-email-nodemailer": "^5.16.1",
     "@strapi/provider-upload-cloudinary": "^5.22.0",
     "@strapi/strapi": "5.16.1",
+    "dayjs": "^1.11.18",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
     "pg": "^8.16.3",
