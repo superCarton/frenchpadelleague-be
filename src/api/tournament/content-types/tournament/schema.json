@@ -39,12 +39,6 @@
       "relation": "oneToOne",
       "target": "api::league.league"
     },
-    "tournament_phases": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tournament-phase.tournament-phase",
-      "mappedBy": "tournament"
-    },
     "currentStatus": {
       "type": "enumeration",
       "required": true,
@@ -95,6 +89,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::player.player"
+    },
+    "tournament_groups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tournament-group.tournament-group",
+      "mappedBy": "tournament"
     }
   }
 }

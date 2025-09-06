@@ -26,14 +26,14 @@
       "target": "api::match.match",
       "mappedBy": "tournament_group"
     },
-    "tournament_phase": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::tournament-phase.tournament-phase",
-      "inversedBy": "tournament_groups"
-    },
     "nbTeamsQualified": {
       "type": "integer"
+    },
+    "tournament": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tournament.tournament",
+      "inversedBy": "tournament_groups"
     }
   }
 }
