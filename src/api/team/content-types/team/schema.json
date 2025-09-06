@@ -39,6 +39,12 @@
       "relation": "manyToOne",
       "target": "api::tournament.tournament",
       "inversedBy": "teams"
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "elo": {
+      "type": "integer"
     }
   }
 }

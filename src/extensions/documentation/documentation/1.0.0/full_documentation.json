@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T13:31:53.418Z"
+    "x-generation-date": "2025-09-06T22:19:37.660Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -7937,6 +7937,12 @@
                                       }
                                     }
                                   },
+                                  "seed": {
+                                    "type": "integer"
+                                  },
+                                  "elo": {
+                                    "type": "integer"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -13362,6 +13368,12 @@
                   }
                 }
               },
+              "seed": {
+                "type": "integer"
+              },
+              "elo": {
+                "type": "integer"
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -15350,6 +15362,12 @@
                                         "type": "string"
                                       }
                                     }
+                                  },
+                                  "seed": {
+                                    "type": "integer"
+                                  },
+                                  "elo": {
+                                    "type": "integer"
                                   },
                                   "createdAt": {
                                     "type": "string",
@@ -17907,6 +17925,12 @@
                                       }
                                     }
                                   },
+                                  "seed": {
+                                    "type": "integer"
+                                  },
+                                  "elo": {
+                                    "type": "integer"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -19321,6 +19345,12 @@
                 ],
                 "example": "string or id"
               },
+              "seed": {
+                "type": "integer"
+              },
+              "elo": {
+                "type": "integer"
+              },
               "locale": {
                 "type": "string"
               },
@@ -20585,6 +20615,12 @@
                                       }
                                     }
                                   },
+                                  "seed": {
+                                    "type": "integer"
+                                  },
+                                  "elo": {
+                                    "type": "integer"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -21708,6 +21744,12 @@
                 "type": "string"
               }
             }
+          },
+          "seed": {
+            "type": "integer"
+          },
+          "elo": {
+            "type": "integer"
           },
           "createdAt": {
             "type": "string",
@@ -23332,6 +23374,12 @@
                                       }
                                     }
                                   }
+                                },
+                                "seed": {
+                                  "type": "integer"
+                                },
+                                "elo": {
+                                  "type": "integer"
                                 },
                                 "createdAt": {
                                   "type": "string",
@@ -26792,6 +26840,12 @@
                       "type": "string"
                     }
                   }
+                },
+                "seed": {
+                  "type": "integer"
+                },
+                "elo": {
+                  "type": "integer"
                 },
                 "createdAt": {
                   "type": "string",

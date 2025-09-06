@@ -749,6 +749,7 @@ export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    elo: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::team.team'> &
       Schema.Attribute.Private;
@@ -757,6 +758,7 @@ export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
     playerA: Schema.Attribute.Relation<'oneToOne', 'api::player.player'>;
     playerB: Schema.Attribute.Relation<'oneToOne', 'api::player.player'>;
     publishedAt: Schema.Attribute.DateTime;
+    seed: Schema.Attribute.Integer;
     tournament: Schema.Attribute.Relation<
       'manyToOne',
       'api::tournament.tournament'
