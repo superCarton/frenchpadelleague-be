@@ -70,7 +70,9 @@
     },
     "round": {
       "type": "enumeration",
+      "required": true,
       "enum": [
+        "groups",
         "r32",
         "r16",
         "quarter",

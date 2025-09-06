@@ -565,8 +565,9 @@ export interface ApiMatchMatch extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     round: Schema.Attribute.Enumeration<
-      ['r32', 'r16', 'quarter', 'semi', 'final']
-    >;
+      ['groups', 'r32', 'r16', 'quarter', 'semi', 'final']
+    > &
+      Schema.Attribute.Required;
     scheduledDate: Schema.Attribute.DateTime;
     score: Schema.Attribute.Component<'shared.match-set', true>;
     team_a: Schema.Attribute.Relation<'oneToOne', 'api::team.team'>;

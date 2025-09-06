@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T08:53:06.136Z"
+    "x-generation-date": "2025-09-06T13:31:53.418Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -8506,6 +8506,7 @@
                                   "round": {
                                     "type": "string",
                                     "enum": [
+                                      "groups",
                                       "r32",
                                       "r16",
                                       "quarter",
@@ -10960,7 +10961,8 @@
           "data": {
             "required": [
               "matchStatus",
-              "name"
+              "name",
+              "round"
             ],
             "type": "object",
             "properties": {
@@ -11058,6 +11060,7 @@
               "round": {
                 "type": "string",
                 "enum": [
+                  "groups",
                   "r32",
                   "r16",
                   "quarter",
@@ -11125,7 +11128,8 @@
         "type": "object",
         "required": [
           "matchStatus",
-          "name"
+          "name",
+          "round"
         ],
         "properties": {
           "id": {
@@ -12709,6 +12713,7 @@
                                       "round": {
                                         "type": "string",
                                         "enum": [
+                                          "groups",
                                           "r32",
                                           "r16",
                                           "quarter",
@@ -13493,6 +13498,7 @@
           "round": {
             "type": "string",
             "enum": [
+              "groups",
               "r32",
               "r16",
               "quarter",
@@ -15914,6 +15920,7 @@
                                   "round": {
                                     "type": "string",
                                     "enum": [
+                                      "groups",
                                       "r32",
                                       "r16",
                                       "quarter",
@@ -18469,6 +18476,7 @@
                                   "round": {
                                     "type": "string",
                                     "enum": [
+                                      "groups",
                                       "r32",
                                       "r16",
                                       "quarter",
@@ -21146,6 +21154,7 @@
                                   "round": {
                                     "type": "string",
                                     "enum": [
+                                      "groups",
                                       "r32",
                                       "r16",
                                       "quarter",
@@ -23529,6 +23538,7 @@
                             "round": {
                               "type": "string",
                               "enum": [
+                                "groups",
                                 "r32",
                                 "r16",
                                 "quarter",
@@ -26134,6 +26144,7 @@
                                         "round": {
                                           "type": "string",
                                           "enum": [
+                                            "groups",
                                             "r32",
                                             "r16",
                                             "quarter",
