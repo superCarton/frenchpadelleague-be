@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_weekdays",
+  "info": {
+    "displayName": "Weekday"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    }
+  },
+  "config": {}
+}

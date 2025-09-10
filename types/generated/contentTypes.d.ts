@@ -440,10 +440,11 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     nextMatch: Schema.Attribute.Relation<'oneToOne', 'api::match.match'>;
+    opening_hours: Schema.Attribute.Component<'shared.opening-hour', true>;
+    padelCourts: Schema.Attribute.Component<'shared.padel-court', true>;
     phoneNumber: Schema.Attribute.String;
     players: Schema.Attribute.Relation<'oneToMany', 'api::player.player'>;
     publishedAt: Schema.Attribute.DateTime;
-    totalCourts: Schema.Attribute.Integer & Schema.Attribute.Required;
     tournaments: Schema.Attribute.Relation<
       'oneToMany',
       'api::tournament.tournament'

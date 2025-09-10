@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-06T22:19:37.660Z"
+    "x-generation-date": "2025-09-10T15:01:46.337Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -6563,7 +6563,6 @@
           "data": {
             "required": [
               "name",
-              "totalCourts",
               "hasRestaurant",
               "logo",
               "coverImage"
@@ -6586,9 +6585,6 @@
               },
               "address": {
                 "$ref": "#/components/schemas/SharedAddressComponent"
-              },
-              "totalCourts": {
-                "type": "integer"
               },
               "hasRestaurant": {
                 "type": "boolean"
@@ -6670,6 +6666,18 @@
                 ],
                 "example": "string or id"
               },
+              "opening_hours": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                }
+              },
+              "padelCourts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                }
+              },
               "locale": {
                 "type": "string"
               },
@@ -6730,7 +6738,6 @@
         "type": "object",
         "required": [
           "name",
-          "totalCourts",
           "hasRestaurant",
           "logo",
           "coverImage"
@@ -7234,9 +7241,6 @@
                       },
                       "address": {
                         "$ref": "#/components/schemas/SharedAddressComponent"
-                      },
-                      "totalCourts": {
-                        "type": "integer"
                       },
                       "hasRestaurant": {
                         "type": "boolean"
@@ -8664,6 +8668,18 @@
                           }
                         }
                       },
+                      "opening_hours": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                        }
+                      },
+                      "padelCourts": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                        }
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -9031,9 +9047,6 @@
           "address": {
             "$ref": "#/components/schemas/SharedAddressComponent"
           },
-          "totalCourts": {
-            "type": "integer"
-          },
           "hasRestaurant": {
             "type": "boolean"
           },
@@ -9350,6 +9363,18 @@
               }
             }
           },
+          "opening_hours": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedOpeningHourComponent"
+            }
+          },
+          "padelCourts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedPadelCourtComponent"
+            }
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -9442,6 +9467,68 @@
           "longitude": {
             "type": "number",
             "format": "float"
+          }
+        }
+      },
+      "SharedWeekdayComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string",
+            "enum": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday",
+              "friday",
+              "saturday",
+              "sunday"
+            ]
+          }
+        }
+      },
+      "SharedOpeningHourComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "openingTime": {
+            "type": "string",
+            "format": "time",
+            "example": "12:54.000"
+          },
+          "closingTime": {
+            "type": "string",
+            "format": "time",
+            "example": "12:54.000"
+          },
+          "days": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedWeekdayComponent"
+            }
+          }
+        }
+      },
+      "SharedPadelCourtComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "indoor",
+              "outdoor"
+            ]
           }
         }
       },
@@ -11646,9 +11733,6 @@
                           "address": {
                             "$ref": "#/components/schemas/SharedAddressComponent"
                           },
-                          "totalCourts": {
-                            "type": "integer"
-                          },
                           "hasRestaurant": {
                             "type": "boolean"
                           },
@@ -12869,6 +12953,18 @@
                               "documentId": {
                                 "type": "string"
                               }
+                            }
+                          },
+                          "opening_hours": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                            }
+                          },
+                          "padelCourts": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/SharedPadelCourtComponent"
                             }
                           },
                           "createdAt": {
@@ -14661,9 +14757,6 @@
                       "address": {
                         "$ref": "#/components/schemas/SharedAddressComponent"
                       },
-                      "totalCourts": {
-                        "type": "integer"
-                      },
                       "hasRestaurant": {
                         "type": "boolean"
                       },
@@ -16088,6 +16181,18 @@
                           "documentId": {
                             "type": "string"
                           }
+                        }
+                      },
+                      "opening_hours": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                        }
+                      },
+                      "padelCourts": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedPadelCourtComponent"
                         }
                       },
                       "createdAt": {
@@ -17223,9 +17328,6 @@
                       "address": {
                         "$ref": "#/components/schemas/SharedAddressComponent"
                       },
-                      "totalCourts": {
-                        "type": "integer"
-                      },
                       "hasRestaurant": {
                         "type": "boolean"
                       },
@@ -18650,6 +18752,18 @@
                           "documentId": {
                             "type": "string"
                           }
+                        }
+                      },
+                      "opening_hours": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                        }
+                      },
+                      "padelCourts": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedPadelCourtComponent"
                         }
                       },
                       "createdAt": {
@@ -19913,9 +20027,6 @@
                       "address": {
                         "$ref": "#/components/schemas/SharedAddressComponent"
                       },
-                      "totalCourts": {
-                        "type": "integer"
-                      },
                       "hasRestaurant": {
                         "type": "boolean"
                       },
@@ -21340,6 +21451,18 @@
                           "documentId": {
                             "type": "string"
                           }
+                        }
+                      },
+                      "opening_hours": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                        }
+                      },
+                      "padelCourts": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/SharedPadelCourtComponent"
                         }
                       },
                       "createdAt": {
@@ -23948,9 +24071,6 @@
               "address": {
                 "$ref": "#/components/schemas/SharedAddressComponent"
               },
-              "totalCourts": {
-                "type": "integer"
-              },
               "hasRestaurant": {
                 "type": "boolean"
               },
@@ -24265,6 +24385,18 @@
                   "documentId": {
                     "type": "string"
                   }
+                }
+              },
+              "opening_hours": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                }
+              },
+              "padelCourts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SharedPadelCourtComponent"
                 }
               },
               "createdAt": {
@@ -25118,9 +25250,6 @@
                             },
                             "address": {
                               "$ref": "#/components/schemas/SharedAddressComponent"
-                            },
-                            "totalCourts": {
-                              "type": "integer"
                             },
                             "hasRestaurant": {
                               "type": "boolean"
@@ -26342,6 +26471,18 @@
                                 "documentId": {
                                   "type": "string"
                                 }
+                              }
+                            },
+                            "opening_hours": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/SharedOpeningHourComponent"
+                              }
+                            },
+                            "padelCourts": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/SharedPadelCourtComponent"
                               }
                             },
                             "createdAt": {

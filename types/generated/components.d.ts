@@ -40,6 +40,33 @@ export interface SharedMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedOpeningHour extends Struct.ComponentSchema {
+  collectionName: 'components_shared_opening_hours';
+  info: {
+    displayName: 'OpeningHours';
+  };
+  attributes: {
+    closingTime: Schema.Attribute.Time &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'22:00:00.000'>;
+    days: Schema.Attribute.Component<'shared.weekday', true>;
+    openingTime: Schema.Attribute.Time &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'09:00:00.000'>;
+  };
+}
+
+export interface SharedPadelCourt extends Struct.ComponentSchema {
+  collectionName: 'components_shared_padel_courts';
+  info: {
+    displayName: 'PadelCourt';
+  };
+  attributes: {
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    type: Schema.Attribute.Enumeration<['indoor', 'outdoor']>;
+  };
+}
+
 export interface SharedQuote extends Struct.ComponentSchema {
   collectionName: 'components_shared_quotes';
   info: {
@@ -91,16 +118,40 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedWeekday extends Struct.ComponentSchema {
+  collectionName: 'components_shared_weekdays';
+  info: {
+    displayName: 'Weekday';
+  };
+  attributes: {
+    name: Schema.Attribute.Enumeration<
+      [
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday',
+      ]
+    > &
+      Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.address': SharedAddress;
       'shared.match-set': SharedMatchSet;
       'shared.media': SharedMedia;
+      'shared.opening-hour': SharedOpeningHour;
+      'shared.padel-court': SharedPadelCourt;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
+      'shared.weekday': SharedWeekday;
     }
   }
 }

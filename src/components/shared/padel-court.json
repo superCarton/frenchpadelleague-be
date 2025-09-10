@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_padel_courts",
+  "info": {
+    "displayName": "PadelCourt"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "indoor",
+        "outdoor"
+      ]
+    }
+  },
+  "config": {}
+}
