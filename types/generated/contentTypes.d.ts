@@ -439,7 +439,6 @@ export interface ApiClubClub extends Struct.CollectionTypeSchema {
     logo: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    nextMatch: Schema.Attribute.Relation<'oneToOne', 'api::match.match'>;
     opening_hours: Schema.Attribute.Component<'shared.opening-hour', true>;
     padelCourts: Schema.Attribute.Component<'shared.padel-court', true>;
     phoneNumber: Schema.Attribute.String;
@@ -521,6 +520,8 @@ export interface ApiLeagueLeague extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
+    gender: Schema.Attribute.Enumeration<['male', 'female', 'mixed']> &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -700,15 +701,6 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    elo: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      > &
-      Schema.Attribute.DefaultTo<600>;
     firstname: Schema.Attribute.String & Schema.Attribute.Required;
     gender: Schema.Attribute.Enumeration<['male', 'female']> &
       Schema.Attribute.Required;
@@ -724,6 +716,7 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     payments: Schema.Attribute.Relation<'oneToMany', 'api::payment.payment'>;
     phoneNumber: Schema.Attribute.String;
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    playerStat: Schema.Attribute.Component<'shared.elo-stat', false>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -818,7 +811,9 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
   };
   attributes: {
     allocatedCourts: Schema.Attribute.Integer;
+    ballsType: Schema.Attribute.String;
     club: Schema.Attribute.Relation<'manyToOne', 'api::club.club'>;
+    courts: Schema.Attribute.Component<'shared.padel-court', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

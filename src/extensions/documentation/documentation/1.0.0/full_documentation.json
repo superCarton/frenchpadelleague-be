@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-10T15:01:46.337Z"
+    "x-generation-date": "2025-09-25T08:25:08.614Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -6655,17 +6655,6 @@
                   "example": "string or id"
                 }
               },
-              "nextMatch": {
-                "oneOf": [
-                  {
-                    "type": "integer"
-                  },
-                  {
-                    "type": "string"
-                  }
-                ],
-                "example": "string or id"
-              },
               "opening_hours": {
                 "type": "array",
                 "items": {
@@ -8154,6 +8143,14 @@
                                     }
                                   }
                                 },
+                                "gender": {
+                                  "type": "string",
+                                  "enum": [
+                                    "male",
+                                    "female",
+                                    "mixed"
+                                  ]
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -8603,6 +8600,15 @@
                                 }
                               }
                             },
+                            "courts": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                              }
+                            },
+                            "ballsType": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -8654,17 +8660,6 @@
                                 }
                               }
                             }
-                          }
-                        }
-                      },
-                      "nextMatch": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
                           }
                         }
                       },
@@ -8887,9 +8882,6 @@
                       }
                     }
                   },
-                  "elo": {
-                    "type": "integer"
-                  },
                   "firstname": {
                     "type": "string"
                   },
@@ -8923,6 +8915,9 @@
                   },
                   "phoneNumber": {
                     "type": "string"
+                  },
+                  "playerStat": {
+                    "$ref": "#/components/schemas/SharedEloStatComponent"
                   },
                   "createdAt": {
                     "type": "string",
@@ -9352,17 +9347,6 @@
               }
             }
           },
-          "nextMatch": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
           "opening_hours": {
             "type": "array",
             "items": {
@@ -9542,6 +9526,35 @@
             "type": "integer"
           },
           "teamBScore": {
+            "type": "integer"
+          }
+        }
+      },
+      "SharedEloStatComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "elo": {
+            "type": "integer"
+          },
+          "mixedElo": {
+            "type": "integer"
+          },
+          "bestElo": {
+            "type": "integer"
+          },
+          "bestMixedElo": {
+            "type": "integer"
+          },
+          "quizzDone": {
+            "type": "boolean"
+          },
+          "quizzTotalPoints": {
+            "type": "integer"
+          },
+          "fftPadelRank": {
             "type": "integer"
           }
         }
@@ -10070,7 +10083,8 @@
               "maxElo",
               "title",
               "description",
-              "badgeImage"
+              "badgeImage",
+              "gender"
             ],
             "type": "object",
             "properties": {
@@ -10099,6 +10113,14 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "gender": {
+                "type": "string",
+                "enum": [
+                  "male",
+                  "female",
+                  "mixed"
+                ]
               },
               "locale": {
                 "type": "string"
@@ -10164,7 +10186,8 @@
           "maxElo",
           "title",
           "description",
-          "badgeImage"
+          "badgeImage",
+          "gender"
         ],
         "properties": {
           "id": {
@@ -10786,6 +10809,14 @@
               }
             }
           },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female",
+              "mixed"
+            ]
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -10977,6 +11008,14 @@
                       }
                     }
                   }
+                },
+                "gender": {
+                  "type": "string",
+                  "enum": [
+                    "male",
+                    "female",
+                    "mixed"
+                  ]
                 },
                 "createdAt": {
                   "type": "string",
@@ -12441,6 +12480,14 @@
                                         }
                                       }
                                     },
+                                    "gender": {
+                                      "type": "string",
+                                      "enum": [
+                                        "male",
+                                        "female",
+                                        "mixed"
+                                      ]
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -12890,6 +12937,15 @@
                                     }
                                   }
                                 },
+                                "courts": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                                  }
+                                },
+                                "ballsType": {
+                                  "type": "string"
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -12941,17 +12997,6 @@
                                     }
                                   }
                                 }
-                              }
-                            }
-                          },
-                          "nextMatch": {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "documentId": {
-                                "type": "string"
                               }
                             }
                           },
@@ -13238,9 +13283,6 @@
                       }
                     }
                   },
-                  "elo": {
-                    "type": "integer"
-                  },
                   "firstname": {
                     "type": "string"
                   },
@@ -13368,6 +13410,9 @@
                   },
                   "phoneNumber": {
                     "type": "string"
+                  },
+                  "playerStat": {
+                    "$ref": "#/components/schemas/SharedEloStatComponent"
                   },
                   "createdAt": {
                     "type": "string",
@@ -15669,6 +15714,14 @@
                                     }
                                   }
                                 },
+                                "gender": {
+                                  "type": "string",
+                                  "enum": [
+                                    "male",
+                                    "female",
+                                    "mixed"
+                                  ]
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -16118,6 +16171,15 @@
                                 }
                               }
                             },
+                            "courts": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                              }
+                            },
+                            "ballsType": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -16169,17 +16231,6 @@
                                 }
                               }
                             }
-                          }
-                        }
-                      },
-                      "nextMatch": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
                           }
                         }
                       },
@@ -16466,9 +16517,6 @@
                   }
                 }
               },
-              "elo": {
-                "type": "integer"
-              },
               "firstname": {
                 "type": "string"
               },
@@ -16502,6 +16550,9 @@
               },
               "phoneNumber": {
                 "type": "string"
+              },
+              "playerStat": {
+                "$ref": "#/components/schemas/SharedEloStatComponent"
               },
               "createdAt": {
                 "type": "string",
@@ -16660,7 +16711,6 @@
         "properties": {
           "data": {
             "required": [
-              "elo",
               "firstname",
               "lastname",
               "birthdate",
@@ -16726,9 +16776,6 @@
                 ],
                 "example": "string or id"
               },
-              "elo": {
-                "type": "integer"
-              },
               "firstname": {
                 "type": "string"
               },
@@ -16762,6 +16809,9 @@
               },
               "phoneNumber": {
                 "type": "string"
+              },
+              "playerStat": {
+                "$ref": "#/components/schemas/SharedEloStatComponent"
               },
               "locale": {
                 "type": "string"
@@ -16822,7 +16872,6 @@
       "Player": {
         "type": "object",
         "required": [
-          "elo",
           "firstname",
           "lastname",
           "birthdate",
@@ -18240,6 +18289,14 @@
                                     }
                                   }
                                 },
+                                "gender": {
+                                  "type": "string",
+                                  "enum": [
+                                    "male",
+                                    "female",
+                                    "mixed"
+                                  ]
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -18689,6 +18746,15 @@
                                 }
                               }
                             },
+                            "courts": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                              }
+                            },
+                            "ballsType": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -18740,17 +18806,6 @@
                                 }
                               }
                             }
-                          }
-                        }
-                      },
-                      "nextMatch": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
                           }
                         }
                       },
@@ -18973,9 +19028,6 @@
                       }
                     }
                   },
-                  "elo": {
-                    "type": "integer"
-                  },
                   "firstname": {
                     "type": "string"
                   },
@@ -19009,6 +19061,9 @@
                   },
                   "phoneNumber": {
                     "type": "string"
+                  },
+                  "playerStat": {
+                    "$ref": "#/components/schemas/SharedEloStatComponent"
                   },
                   "createdAt": {
                     "type": "string",
@@ -19292,9 +19347,6 @@
               }
             }
           },
-          "elo": {
-            "type": "integer"
-          },
           "firstname": {
             "type": "string"
           },
@@ -19328,6 +19380,9 @@
           },
           "phoneNumber": {
             "type": "string"
+          },
+          "playerStat": {
+            "$ref": "#/components/schemas/SharedEloStatComponent"
           },
           "createdAt": {
             "type": "string",
@@ -20939,6 +20994,14 @@
                                     }
                                   }
                                 },
+                                "gender": {
+                                  "type": "string",
+                                  "enum": [
+                                    "male",
+                                    "female",
+                                    "mixed"
+                                  ]
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -21388,6 +21451,15 @@
                                 }
                               }
                             },
+                            "courts": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                              }
+                            },
+                            "ballsType": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -21439,17 +21511,6 @@
                                 }
                               }
                             }
-                          }
-                        }
-                      },
-                      "nextMatch": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "number"
-                          },
-                          "documentId": {
-                            "type": "string"
                           }
                         }
                       },
@@ -21736,9 +21797,6 @@
                   }
                 }
               },
-              "elo": {
-                "type": "integer"
-              },
               "firstname": {
                 "type": "string"
               },
@@ -21772,6 +21830,9 @@
               },
               "phoneNumber": {
                 "type": "string"
+              },
+              "playerStat": {
+                "$ref": "#/components/schemas/SharedEloStatComponent"
               },
               "createdAt": {
                 "type": "string",
@@ -22077,6 +22138,15 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "courts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                }
+              },
+              "ballsType": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -23218,6 +23288,14 @@
                                             }
                                           }
                                         },
+                                        "gender": {
+                                          "type": "string",
+                                          "enum": [
+                                            "male",
+                                            "female",
+                                            "mixed"
+                                          ]
+                                        },
                                         "createdAt": {
                                           "type": "string",
                                           "format": "date-time"
@@ -23444,6 +23522,15 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "courts": {
+                                      "type": "array",
+                                      "items": {
+                                        "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                                      }
+                                    },
+                                    "ballsType": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -23911,9 +23998,6 @@
                           }
                         }
                       },
-                      "elo": {
-                        "type": "integer"
-                      },
                       "firstname": {
                         "type": "string"
                       },
@@ -23947,6 +24031,9 @@
                       },
                       "phoneNumber": {
                         "type": "string"
+                      },
+                      "playerStat": {
+                        "$ref": "#/components/schemas/SharedEloStatComponent"
                       },
                       "createdAt": {
                         "type": "string",
@@ -24376,17 +24463,6 @@
                   }
                 }
               },
-              "nextMatch": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "number"
-                  },
-                  "documentId": {
-                    "type": "string"
-                  }
-                }
-              },
               "opening_hours": {
                 "type": "array",
                 "items": {
@@ -24554,6 +24630,15 @@
                 }
               }
             }
+          },
+          "courts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedPadelCourtComponent"
+            }
+          },
+          "ballsType": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -25959,6 +26044,14 @@
                                           }
                                         }
                                       },
+                                      "gender": {
+                                        "type": "string",
+                                        "enum": [
+                                          "male",
+                                          "female",
+                                          "mixed"
+                                        ]
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -26408,6 +26501,15 @@
                                       }
                                     }
                                   },
+                                  "courts": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/components/schemas/SharedPadelCourtComponent"
+                                    }
+                                  },
+                                  "ballsType": {
+                                    "type": "string"
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -26459,17 +26561,6 @@
                                       }
                                     }
                                   }
-                                }
-                              }
-                            },
-                            "nextMatch": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "number"
-                                },
-                                "documentId": {
-                                  "type": "string"
                                 }
                               }
                             },
@@ -26756,9 +26847,6 @@
                         }
                       }
                     },
-                    "elo": {
-                      "type": "integer"
-                    },
                     "firstname": {
                       "type": "string"
                     },
@@ -26886,6 +26974,9 @@
                     },
                     "phoneNumber": {
                       "type": "string"
+                    },
+                    "playerStat": {
+                      "$ref": "#/components/schemas/SharedEloStatComponent"
                     },
                     "createdAt": {
                       "type": "string",

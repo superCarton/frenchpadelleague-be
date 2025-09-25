@@ -3,6 +3,8 @@ import type { Context } from 'koa';
 import { confirmationEmail } from '../../../utils/emails';
 import crypto from "crypto";
 
+const DEFAULT_CREATED_ELO = 200;
+
 export default factories.createCoreController('api::player.player', ({ strapi }) => ({
   async create(ctx) {
     const data = ctx.request.body;
@@ -44,18 +46,17 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         confirmationToken
       });
 
-    const elo = playerData.elo || 600;
-
     // Trouve la league correspondant à cet elo
     const matchingLeague = await strapi.db.query("api::league.league").findOne({
       where: {
-        minElo: { $lte: elo },
-        maxElo: { $gte: elo },
+        minElo: { $lte: DEFAULT_CREATED_ELO },
+        maxElo: { $gte: DEFAULT_CREATED_ELO },
+        gender: { $eq: gender },
       },
     });
 
     if (!matchingLeague) {
-      return ctx.badRequest(`Aucune league trouvée pour l'elo ${elo}`);
+      return ctx.badRequest(`Aucune league trouvée pour l'elo ${DEFAULT_CREATED_ELO}`);
     }
 
     // Crée le player et lie le user
@@ -68,6 +69,10 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         ...playerData,
         user: newUser.id,
         league: matchingLeague.id,
+        playerStat: {
+          elo: DEFAULT_CREATED_ELO, 
+          bestElo: DEFAULT_CREATED_ELO,
+        }
       },
     });
 

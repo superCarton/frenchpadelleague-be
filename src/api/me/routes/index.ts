@@ -40,6 +40,36 @@ export default {
           strategies: ['users-permissions'],
         },
       },
-    }
+    },
+    {
+      method: "POST",
+      path: "/me/player/level-quizz",
+      handler: "me.updateEloFromQuizz",
+      config: {
+        auth: {
+          strategies: ['users-permissions'],
+        },
+      },
+    },
+    {
+      method: "POST",
+      path: "/me/player/photo",
+      handler: "me.uploadProfilePhoto",
+      config: {
+        auth: {
+          strategies: ['users-permissions'],
+        },
+      },
+    },
+    {
+      method: "POST",
+      path: "/me/update-profile",
+      handler: "me.updateProfile",
+      config: {
+        auth: {
+          strategies: ['users-permissions'],
+        },
+      },
+    },
   ],
 };

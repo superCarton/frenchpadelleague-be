@@ -43,12 +43,6 @@
         "audios"
       ]
     },
-    "elo": {
-      "type": "integer",
-      "required": true,
-      "default": 600,
-      "min": 0
-    },
     "firstname": {
       "type": "string",
       "required": true
@@ -77,6 +71,11 @@
     },
     "phoneNumber": {
       "type": "string"
+    },
+    "playerStat": {
+      "type": "component",
+      "component": "shared.elo-stat",
+      "repeatable": false
     }
   }
 }

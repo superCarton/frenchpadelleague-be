@@ -40,6 +40,15 @@
         "images",
         "files"
       ]
+    },
+    "gender": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "male",
+        "female",
+        "mixed"
+      ]
     }
   }
 }

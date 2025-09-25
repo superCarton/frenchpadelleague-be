@@ -5,7 +5,6 @@ export default [
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::query',
-  'strapi::body',
   {
     name: 'strapi::session',
     config: {
@@ -17,4 +16,15 @@ export default [
   },
   'strapi::favicon',
   'strapi::public',
+  {
+    name: "strapi::body",
+    config: {
+      formLimit: "20mb",    // formulaires textuels
+      jsonLimit: "20mb",    // JSON
+      textLimit: "20mb",    // text/plain
+      formidable: {
+        maxFileSize: 20 * 1024 * 1024, // 20 MB max pour les fichiers
+      },
+    },
+  },
 ];

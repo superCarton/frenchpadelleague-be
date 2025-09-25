@@ -77,11 +77,6 @@
       "target": "api::tournament.tournament",
       "mappedBy": "club"
     },
-    "nextMatch": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::match.match"
-    },
     "opening_hours": {
       "type": "component",
       "component": "shared.opening-hour",

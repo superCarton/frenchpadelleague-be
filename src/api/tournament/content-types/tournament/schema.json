@@ -95,6 +95,14 @@
       "relation": "oneToMany",
       "target": "api::tournament-group.tournament-group",
       "mappedBy": "tournament"
+    },
+    "courts": {
+      "type": "component",
+      "component": "shared.padel-court",
+      "repeatable": true
+    },
+    "ballsType": {
+      "type": "string"
     }
   }
 }

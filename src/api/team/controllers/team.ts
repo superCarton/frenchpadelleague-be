@@ -64,6 +64,14 @@ export default factories.createCoreController("api::team.team", ({ strapi }) => 
       return ctx.badRequest("Les joueurs ne sont pas dans la même ligue que le tournoi.");
     }
 
+    const sameGender = tournament.gender === "mixed" ? true : (
+      currentPlayer.gender === tournament.gender &&
+      partner.gender === tournament.gender);
+
+    if (!sameGender) {
+      return ctx.badRequest("Les joueurs ne sont pas dans le même genre que le tournoi.");
+    }
+
     const alreadyRegistered = tournament.teams.some((team) =>
       [team.playerA.documentId, team.playerB.documentId].some((p) => currentPlayer.documentId === p ||  partner.documentId === p)
     );

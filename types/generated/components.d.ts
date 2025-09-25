@@ -18,6 +18,43 @@ export interface SharedAddress extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedEloStat extends Struct.ComponentSchema {
+  collectionName: 'components_shared_elo_stats';
+  info: {
+    displayName: 'PlayerStat';
+  };
+  attributes: {
+    bestElo: Schema.Attribute.Integer & Schema.Attribute.Required;
+    bestMixedElo: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    elo: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    fftPadelRank: Schema.Attribute.Integer;
+    mixedElo: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    quizzDone: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    quizzTotalPoints: Schema.Attribute.Integer;
+  };
+}
+
 export interface SharedMatchSet extends Struct.ComponentSchema {
   collectionName: 'components_shared_match_sets';
   info: {
@@ -143,6 +180,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.address': SharedAddress;
+      'shared.elo-stat': SharedEloStat;
       'shared.match-set': SharedMatchSet;
       'shared.media': SharedMedia;
       'shared.opening-hour': SharedOpeningHour;
