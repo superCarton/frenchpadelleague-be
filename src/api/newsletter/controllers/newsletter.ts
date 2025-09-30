@@ -19,7 +19,7 @@ export default factories.createCoreController('api::newsletter.newsletter', {
       data: { email },
     });
 
-    await registerNewsletterEmail(email);
+    registerNewsletterEmail(email);
 
     return entry;
   },

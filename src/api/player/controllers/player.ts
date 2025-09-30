@@ -70,7 +70,7 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         user: newUser.id,
         league: matchingLeague.id,
         elo: {
-          elo: DEFAULT_CREATED_ELO, 
+          current: DEFAULT_CREATED_ELO, 
           best: DEFAULT_CREATED_ELO,
           mixed: DEFAULT_CREATED_ELO,
           bestMixed: DEFAULT_CREATED_ELO
@@ -79,7 +79,7 @@ export default factories.createCoreController('api::player.player', ({ strapi })
     });
 
     // Envoie l'email de confirmation
-    await confirmationEmail(newUser.email, firstname, confirmationToken);
+    confirmationEmail(newUser.email, firstname, confirmationToken);
 
     // Génère le token JWT
     const token = strapi
