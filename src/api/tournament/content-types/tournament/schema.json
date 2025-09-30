@@ -67,9 +67,6 @@
     "prizeMoney": {
       "type": "integer"
     },
-    "allocatedCourts": {
-      "type": "integer"
-    },
     "gender": {
       "type": "enumeration",
       "required": true,

@@ -15,7 +15,7 @@ export const getLeagueByFFTPadelRank = (gender: "male" | "female", ranking: numb
 }
 
 // League is caped to gold/emeraude when using the quizz
-export const getLeagueByQuizzScore = (gender: "male" | "female", quizzScore: number) => {
+export const getLeagueByQuizScore = (gender: "male" | "female", quizzScore: number) => {
     if (gender === "male") {
         if (quizzScore <= 10) return "bronze";
         if (quizzScore <= 15) return "silver"; 

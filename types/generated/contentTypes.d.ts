@@ -701,6 +701,8 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    elo: Schema.Attribute.Component<'shared.elo', false> &
+      Schema.Attribute.Required;
     firstname: Schema.Attribute.String & Schema.Attribute.Required;
     gender: Schema.Attribute.Enumeration<['male', 'female']> &
       Schema.Attribute.Required;
@@ -716,8 +718,8 @@ export interface ApiPlayerPlayer extends Struct.CollectionTypeSchema {
     payments: Schema.Attribute.Relation<'oneToMany', 'api::payment.payment'>;
     phoneNumber: Schema.Attribute.String;
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    playerStat: Schema.Attribute.Component<'shared.elo-stat', false>;
     publishedAt: Schema.Attribute.DateTime;
+    selfEvaluation: Schema.Attribute.Component<'shared.self-evaluation', false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -810,7 +812,6 @@ export interface ApiTournamentTournament extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    allocatedCourts: Schema.Attribute.Integer;
     ballsType: Schema.Attribute.String;
     club: Schema.Attribute.Relation<'manyToOne', 'api::club.club'>;
     courts: Schema.Attribute.Component<'shared.padel-court', true>;

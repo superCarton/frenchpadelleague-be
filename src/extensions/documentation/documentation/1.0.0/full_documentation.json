@@ -16,7 +16,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-09-25T08:25:08.614Z"
+    "x-generation-date": "2025-09-30T08:26:07.979Z"
   },
   "generateDefaultDocumentation": true,
   "openapi": "3.0.0",
@@ -8232,9 +8232,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "allocatedCourts": {
-                              "type": "integer"
-                            },
                             "gender": {
                               "type": "string",
                               "enum": [
@@ -8916,8 +8913,11 @@
                   "phoneNumber": {
                     "type": "string"
                   },
-                  "playerStat": {
-                    "$ref": "#/components/schemas/SharedEloStatComponent"
+                  "elo": {
+                    "$ref": "#/components/schemas/SharedEloComponent"
+                  },
+                  "selfEvaluation": {
+                    "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
                   },
                   "createdAt": {
                     "type": "string",
@@ -9530,31 +9530,43 @@
           }
         }
       },
-      "SharedEloStatComponent": {
+      "SharedEloComponent": {
         "type": "object",
         "properties": {
           "id": {
             "type": "number"
           },
-          "elo": {
+          "current": {
             "type": "integer"
           },
-          "mixedElo": {
+          "best": {
             "type": "integer"
           },
-          "bestElo": {
+          "mixed": {
             "type": "integer"
           },
-          "bestMixedElo": {
+          "bestMixed": {
             "type": "integer"
+          }
+        }
+      },
+      "SharedSelfEvaluationComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
           },
-          "quizzDone": {
-            "type": "boolean"
-          },
-          "quizzTotalPoints": {
-            "type": "integer"
+          "date": {
+            "type": "string",
+            "format": "date"
           },
           "fftPadelRank": {
+            "type": "integer"
+          },
+          "fftLicenceNumber": {
+            "type": "string"
+          },
+          "quizScore": {
             "type": "integer"
           }
         }
@@ -12569,9 +12581,6 @@
                                 "prizeMoney": {
                                   "type": "integer"
                                 },
-                                "allocatedCourts": {
-                                  "type": "integer"
-                                },
                                 "gender": {
                                   "type": "string",
                                   "enum": [
@@ -13411,8 +13420,11 @@
                   "phoneNumber": {
                     "type": "string"
                   },
-                  "playerStat": {
-                    "$ref": "#/components/schemas/SharedEloStatComponent"
+                  "elo": {
+                    "$ref": "#/components/schemas/SharedEloComponent"
+                  },
+                  "selfEvaluation": {
+                    "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
                   },
                   "createdAt": {
                     "type": "string",
@@ -15803,9 +15815,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "allocatedCourts": {
-                              "type": "integer"
-                            },
                             "gender": {
                               "type": "string",
                               "enum": [
@@ -16551,8 +16560,11 @@
               "phoneNumber": {
                 "type": "string"
               },
-              "playerStat": {
-                "$ref": "#/components/schemas/SharedEloStatComponent"
+              "elo": {
+                "$ref": "#/components/schemas/SharedEloComponent"
+              },
+              "selfEvaluation": {
+                "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
               },
               "createdAt": {
                 "type": "string",
@@ -16714,7 +16726,8 @@
               "firstname",
               "lastname",
               "birthdate",
-              "gender"
+              "gender",
+              "elo"
             ],
             "type": "object",
             "properties": {
@@ -16810,8 +16823,11 @@
               "phoneNumber": {
                 "type": "string"
               },
-              "playerStat": {
-                "$ref": "#/components/schemas/SharedEloStatComponent"
+              "elo": {
+                "$ref": "#/components/schemas/SharedEloComponent"
+              },
+              "selfEvaluation": {
+                "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
               },
               "locale": {
                 "type": "string"
@@ -16875,7 +16891,8 @@
           "firstname",
           "lastname",
           "birthdate",
-          "gender"
+          "gender",
+          "elo"
         ],
         "properties": {
           "id": {
@@ -18378,9 +18395,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "allocatedCourts": {
-                              "type": "integer"
-                            },
                             "gender": {
                               "type": "string",
                               "enum": [
@@ -19062,8 +19076,11 @@
                   "phoneNumber": {
                     "type": "string"
                   },
-                  "playerStat": {
-                    "$ref": "#/components/schemas/SharedEloStatComponent"
+                  "elo": {
+                    "$ref": "#/components/schemas/SharedEloComponent"
+                  },
+                  "selfEvaluation": {
+                    "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
                   },
                   "createdAt": {
                     "type": "string",
@@ -19381,8 +19398,11 @@
           "phoneNumber": {
             "type": "string"
           },
-          "playerStat": {
-            "$ref": "#/components/schemas/SharedEloStatComponent"
+          "elo": {
+            "$ref": "#/components/schemas/SharedEloComponent"
+          },
+          "selfEvaluation": {
+            "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
           },
           "createdAt": {
             "type": "string",
@@ -21083,9 +21103,6 @@
                             "prizeMoney": {
                               "type": "integer"
                             },
-                            "allocatedCourts": {
-                              "type": "integer"
-                            },
                             "gender": {
                               "type": "string",
                               "enum": [
@@ -21831,8 +21848,11 @@
               "phoneNumber": {
                 "type": "string"
               },
-              "playerStat": {
-                "$ref": "#/components/schemas/SharedEloStatComponent"
+              "elo": {
+                "$ref": "#/components/schemas/SharedEloComponent"
+              },
+              "selfEvaluation": {
+                "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
               },
               "createdAt": {
                 "type": "string",
@@ -22087,9 +22107,6 @@
                 "type": "integer"
               },
               "prizeMoney": {
-                "type": "integer"
-              },
-              "allocatedCourts": {
                 "type": "integer"
               },
               "gender": {
@@ -23377,9 +23394,6 @@
                                     "prizeMoney": {
                                       "type": "integer"
                                     },
-                                    "allocatedCourts": {
-                                      "type": "integer"
-                                    },
                                     "gender": {
                                       "type": "string",
                                       "enum": [
@@ -24032,8 +24046,11 @@
                       "phoneNumber": {
                         "type": "string"
                       },
-                      "playerStat": {
-                        "$ref": "#/components/schemas/SharedEloStatComponent"
+                      "elo": {
+                        "$ref": "#/components/schemas/SharedEloComponent"
+                      },
+                      "selfEvaluation": {
+                        "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
                       },
                       "createdAt": {
                         "type": "string",
@@ -24579,9 +24596,6 @@
             "type": "integer"
           },
           "prizeMoney": {
-            "type": "integer"
-          },
-          "allocatedCourts": {
             "type": "integer"
           },
           "gender": {
@@ -26133,9 +26147,6 @@
                                   "prizeMoney": {
                                     "type": "integer"
                                   },
-                                  "allocatedCourts": {
-                                    "type": "integer"
-                                  },
                                   "gender": {
                                     "type": "string",
                                     "enum": [
@@ -26975,8 +26986,11 @@
                     "phoneNumber": {
                       "type": "string"
                     },
-                    "playerStat": {
-                      "$ref": "#/components/schemas/SharedEloStatComponent"
+                    "elo": {
+                      "$ref": "#/components/schemas/SharedEloComponent"
+                    },
+                    "selfEvaluation": {
+                      "$ref": "#/components/schemas/SharedSelfEvaluationComponent"
                     },
                     "createdAt": {
                       "type": "string",

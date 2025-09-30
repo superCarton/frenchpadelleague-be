@@ -72,9 +72,15 @@
     "phoneNumber": {
       "type": "string"
     },
-    "playerStat": {
+    "elo": {
       "type": "component",
-      "component": "shared.elo-stat",
+      "component": "shared.elo",
+      "repeatable": false,
+      "required": true
+    },
+    "selfEvaluation": {
+      "type": "component",
+      "component": "shared.self-evaluation",
       "repeatable": false
     }
   }

@@ -18,21 +18,13 @@ export interface SharedAddress extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedEloStat extends Struct.ComponentSchema {
-  collectionName: 'components_shared_elo_stats';
+export interface SharedElo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_elos';
   info: {
-    displayName: 'PlayerStat';
+    displayName: 'Elo';
   };
   attributes: {
-    bestElo: Schema.Attribute.Integer & Schema.Attribute.Required;
-    bestMixedElo: Schema.Attribute.Integer &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
-    elo: Schema.Attribute.Integer &
+    best: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
@@ -40,18 +32,31 @@ export interface SharedEloStat extends Struct.ComponentSchema {
         },
         number
       >;
-    fftPadelRank: Schema.Attribute.Integer;
-    mixedElo: Schema.Attribute.Integer &
+    bestMixed: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
           min: 0;
         },
         number
       >;
-    quizzDone: Schema.Attribute.Boolean &
+    current: Schema.Attribute.Integer &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>;
-    quizzTotalPoints: Schema.Attribute.Integer;
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    mixed: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
   };
 }
 
@@ -104,54 +109,16 @@ export interface SharedPadelCourt extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedQuote extends Struct.ComponentSchema {
-  collectionName: 'components_shared_quotes';
+export interface SharedSelfEvaluation extends Struct.ComponentSchema {
+  collectionName: 'components_shared_self_evaluations';
   info: {
-    displayName: 'Quote';
-    icon: 'indent';
+    displayName: 'SelfEvaluation';
   };
   attributes: {
-    body: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-  };
-}
-
-export interface SharedRichText extends Struct.ComponentSchema {
-  collectionName: 'components_shared_rich_texts';
-  info: {
-    description: '';
-    displayName: 'Rich text';
-    icon: 'align-justify';
-  };
-  attributes: {
-    body: Schema.Attribute.RichText;
-  };
-}
-
-export interface SharedSeo extends Struct.ComponentSchema {
-  collectionName: 'components_shared_seos';
-  info: {
-    description: '';
-    displayName: 'Seo';
-    icon: 'allergies';
-    name: 'Seo';
-  };
-  attributes: {
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
-  };
-}
-
-export interface SharedSlider extends Struct.ComponentSchema {
-  collectionName: 'components_shared_sliders';
-  info: {
-    description: '';
-    displayName: 'Slider';
-    icon: 'address-book';
-  };
-  attributes: {
-    files: Schema.Attribute.Media<'images', true>;
+    date: Schema.Attribute.Date & Schema.Attribute.Required;
+    fftLicenceNumber: Schema.Attribute.String;
+    fftPadelRank: Schema.Attribute.Integer;
+    quizScore: Schema.Attribute.Integer;
   };
 }
 
@@ -180,15 +147,12 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'shared.address': SharedAddress;
-      'shared.elo-stat': SharedEloStat;
+      'shared.elo': SharedElo;
       'shared.match-set': SharedMatchSet;
       'shared.media': SharedMedia;
       'shared.opening-hour': SharedOpeningHour;
       'shared.padel-court': SharedPadelCourt;
-      'shared.quote': SharedQuote;
-      'shared.rich-text': SharedRichText;
-      'shared.seo': SharedSeo;
-      'shared.slider': SharedSlider;
+      'shared.self-evaluation': SharedSelfEvaluation;
       'shared.weekday': SharedWeekday;
     }
   }

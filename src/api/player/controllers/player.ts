@@ -69,9 +69,11 @@ export default factories.createCoreController('api::player.player', ({ strapi })
         ...playerData,
         user: newUser.id,
         league: matchingLeague.id,
-        playerStat: {
+        elo: {
           elo: DEFAULT_CREATED_ELO, 
-          bestElo: DEFAULT_CREATED_ELO,
+          best: DEFAULT_CREATED_ELO,
+          mixed: DEFAULT_CREATED_ELO,
+          bestMixed: DEFAULT_CREATED_ELO
         }
       },
     });

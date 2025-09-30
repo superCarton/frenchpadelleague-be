@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_shared_elos",
+  "info": {
+    "displayName": "Elo"
+  },
+  "options": {},
+  "attributes": {
+    "current": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "best": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "mixed": {
+      "type": "integer",
+      "required": true,
+      "default": 0,
+      "min": 0
+    },
+    "bestMixed": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    }
+  },
+  "config": {}
+}

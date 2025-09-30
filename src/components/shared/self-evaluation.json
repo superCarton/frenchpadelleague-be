@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_self_evaluations",
+  "info": {
+    "displayName": "SelfEvaluation"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "fftPadelRank": {
+      "type": "integer"
+    },
+    "fftLicenceNumber": {
+      "type": "string"
+    },
+    "quizScore": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

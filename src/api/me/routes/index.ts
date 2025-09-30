@@ -43,8 +43,8 @@ export default {
     },
     {
       method: "POST",
-      path: "/me/player/level-quizz",
-      handler: "me.updateEloFromQuizz",
+      path: "/me/player/self-evaluation",
+      handler: "me.selfEvaluation",
       config: {
         auth: {
           strategies: ['users-permissions'],

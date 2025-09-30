@@ -1,8 +1,8 @@
 import type { Context } from 'koa';
-import { getLeagueByFFTPadelRank, getLeagueByQuizzScore } from '../../../utils/ranking';
+import { getLeagueByFFTPadelRank, getLeagueByQuizScore } from '../../../utils/ranking';
 import sharp from "sharp";
 
-const populatePlayer = ['league', 'league.badgeImage', 'user', 'playerStat', 'photo'] as any;
+const populatePlayer = ['league', 'league.badgeImage', 'user', 'elo', 'selfEvaluation', 'photo'] as any;
 
 async function getEntityByUser(ctx: Context, entityUID: string) {
   const user = ctx.state.user;
@@ -50,19 +50,24 @@ export default {
     ctx.body = { player, referee, club };
   },
 
-  async updateEloFromQuizz(ctx: Context) {
+  async selfEvaluation(ctx: Context) {
     const user = ctx.state.user;
     if (!user) {
       return ctx.unauthorized("You must be logged in");
     }
   
-    const { fftPadelRank, quizzTotalPoints } = ctx.request.body as {
+    const { fftPadelRank, fftLicenceNumber, quizScore } = ctx.request.body as {
       fftPadelRank?: number;
-      quizzTotalPoints?: number;
+      fftLicenceNumber?: string;
+      quizScore?: number;
     };
   
-    if (!fftPadelRank && !quizzTotalPoints) {
-      return ctx.badRequest("Either fftPadelRank or quizzTotalPoints is required");
+    if (!fftPadelRank && !quizScore) {
+      return ctx.badRequest("Either fftPadelRank or quizScore is required");
+    }
+
+    if (fftPadelRank && !fftLicenceNumber) {
+      return ctx.badRequest("fftLicenceNumber is required when fftPadelRank is given");
     }
   
     try {
@@ -89,38 +94,45 @@ export default {
           return ctx.badRequest(`Aucune league trouvée pour le ranking ${fftPadelRank}`);
         }
 
-      } else if (quizzTotalPoints) {
+      } else if (quizScore) {
         // Déterminer la ligue à partir du résultat du quizz
-        const leagueName = getLeagueByQuizzScore(player.gender, quizzTotalPoints);
+        const leagueName = getLeagueByQuizScore(player.gender, quizScore);
 
         matchingLeague = await strapi.documents("api::league.league").findFirst({
           filters: { badge: { $eq: leagueName }, gender: { $eq: player.gender } },
         });
   
         if (!matchingLeague) {
-          return ctx.badRequest(`Aucune league trouvée pour le quizz score ${quizzTotalPoints}`);
+          return ctx.badRequest(`Aucune league trouvée pour le quiz score ${quizScore}`);
         }
   
         if (!matchingLeague) {
-          return ctx.badRequest(`Aucune league trouvée pour le quizz score ${quizzTotalPoints}`);
+          return ctx.badRequest(`Aucune league trouvée pour le quiz score ${quizScore}`);
         }
       }
 
       // Elo = milieu de la plage de la ligue
       const newElo = Math.ceil((matchingLeague.minElo + matchingLeague.maxElo) / 2);
-      const updatedPlayerStat = {
-        ...player.playerStat,
-        elo: newElo,
-        bestElo: Math.max(player.playerStat?.bestElo ?? 0, newElo),
-        quizzDone: true,
+      const newBest = Math.max(player.elo.best, newElo);
+
+      const elo = {
+        ...player.elo,
+        current: newElo,
+        best: newBest,
+      };
+
+      const selfEvaluation = {
+        date: new Date(),
         fftPadelRank,
-        quizzTotalPoints,
+        fftLicenceNumber,
+        quizScore
       };
 
       const updated = await strapi.documents("api::player.player").update({
         documentId: player.documentId,
         data: {
-          playerStat: updatedPlayerStat,
+          elo,
+          selfEvaluation,
           league: matchingLeague.documentId,
         },
         populate: populatePlayer,
