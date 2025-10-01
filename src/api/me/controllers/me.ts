@@ -1,5 +1,5 @@
 import type { Context } from 'koa';
-import { getLeagueByFFTPadelRank, getLeagueByQuizScore } from '../../../utils/ranking';
+import { getLeagueBySelfEvaluation } from '../../../utils/ranking';
 import sharp from "sharp";
 
 const populatePlayer = ['league', 'league.badgeImage', 'user', 'elo', 'selfEvaluation', 'photo'] as any;
@@ -80,36 +80,7 @@ export default {
         return ctx.notFound("Player not found");
       }
   
-      let matchingLeague: any;
-  
-      if (fftPadelRank) {
-        // Déterminer la ligue à partir du classement
-        const leagueName = getLeagueByFFTPadelRank(player.gender, fftPadelRank);
-  
-        matchingLeague = await strapi.documents("api::league.league").findFirst({
-          filters: { badge: { $eq: leagueName }, gender: { $eq: player.gender } },
-        });
-  
-        if (!matchingLeague) {
-          return ctx.badRequest(`Aucune league trouvée pour le ranking ${fftPadelRank}`);
-        }
-
-      } else if (quizScore) {
-        // Déterminer la ligue à partir du résultat du quizz
-        const leagueName = getLeagueByQuizScore(player.gender, quizScore);
-
-        matchingLeague = await strapi.documents("api::league.league").findFirst({
-          filters: { badge: { $eq: leagueName }, gender: { $eq: player.gender } },
-        });
-  
-        if (!matchingLeague) {
-          return ctx.badRequest(`Aucune league trouvée pour le quiz score ${quizScore}`);
-        }
-  
-        if (!matchingLeague) {
-          return ctx.badRequest(`Aucune league trouvée pour le quiz score ${quizScore}`);
-        }
-      }
+      const matchingLeague = await getLeagueBySelfEvaluation(ctx, { gender: player.gender, fftPadelRank, quizScore });
 
       // Elo = milieu de la plage de la ligue
       const newElo = Math.ceil((matchingLeague.minElo + matchingLeague.maxElo) / 2);
@@ -193,12 +164,17 @@ export default {
 
       const uploaded = uploadedFiles[0];
 
+      // Supprime l'ancienne photo
+      if ((player as any).photo?.id) {
+        await strapi.plugin("upload").service("upload").remove((player as any).photo.id);
+      }
+
       // 3. Associer la photo au player
       const updated = await strapi.documents("api::player.player").update({
         documentId: player.documentId,
         data: {
           photo: {
-            connect: [uploaded.id],
+            set: [uploaded.id],
           },
         },        
         populate: populatePlayer,

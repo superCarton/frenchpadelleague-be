@@ -74,7 +74,7 @@ export const registerNewsletterEmail = (userEmail: string) => {
         html: emailTemplateContainer(`
             <p>Bonjour,</p>
             <p>Merci pour ton inscription à la newsletter de French Padel League !</p>
-            <p>Pour te désinscrire, clique sur ce lien :<br/><a href="${unsubscribeLink}">Se désinscrire</a></p>
+            <p>Pour te désinscrire, clique sur ce lien :<br/><a style="color: ${yellowPrimary};" href="${unsubscribeLink}">Se désinscrire</a></p>
         `, "Confirmation d'inscription")
     });
 };
@@ -87,7 +87,10 @@ export const confirmationEmail = (userEmail: string, userPrettyName: string, con
       subject: 'Confirmation de l\'email',
       html: emailTemplateContainer(`
           <p>Bonjour ${userPrettyName},</p>
-          <p>Pour confirmer ton email auprès de French Padel League, clique sur ce lien :<br/><a href="${confirmationUrl}">Confirmer l'email</a></p>
+          <p>Pour confirmer ton email auprès de French Padel League, clique sur le bouton suivant<p>
+          <a href="${confirmationUrl}" style="display:inline-block; padding:12px 40px; background-color:${yellowPrimary}; color:#fff; text-decoration:none; border-radius:2px; font-weight:bold; font-size: 16px;">
+            Confirmer l'email
+          </a>            
       `, "Confirmation de l'email")
   });
 }
