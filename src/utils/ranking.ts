@@ -30,6 +30,7 @@ const getLeagueBadgeByQuizScore = (gender: "male" | "female", quizzScore: number
 };
 
 export const getLeagueBySelfEvaluation = async (ctx: Context, { gender, fftPadelRank, quizScore }: { gender: "male" | "female", fftPadelRank?: number, quizScore?: number }) => {
+    const populateLeague = ["badgeImage"] as any;
     let matchingLeague;  
     if (fftPadelRank) {
         // Déterminer la ligue à partir du classement
@@ -37,6 +38,7 @@ export const getLeagueBySelfEvaluation = async (ctx: Context, { gender, fftPadel
   
         matchingLeague = await strapi.documents("api::league.league").findFirst({
           filters: { badge: { $eq: leagueName }, gender: { $eq: gender } },
+          populate: populateLeague
         });
   
         if (!matchingLeague) {
@@ -49,6 +51,7 @@ export const getLeagueBySelfEvaluation = async (ctx: Context, { gender, fftPadel
 
         matchingLeague = await strapi.documents("api::league.league").findFirst({
           filters: { badge: { $eq: leagueName }, gender: { $eq: gender } },
+          populate: populateLeague
         });
   
         if (!matchingLeague) {

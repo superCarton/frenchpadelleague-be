@@ -99,7 +99,7 @@ export default {
         quizScore
       };
 
-      const updated = await strapi.documents("api::player.player").update({
+      await strapi.documents("api::player.player").update({
         documentId: player.documentId,
         data: {
           elo,
@@ -110,7 +110,7 @@ export default {
       });
       
   
-      return ctx.send(updated);
+      return ctx.send(matchingLeague);
     } catch (error) {
       strapi.log.error(error);
       return ctx.internalServerError("Failed to update player elo");
